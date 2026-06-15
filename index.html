@@ -9,6 +9,7 @@
   <meta property="og:description" content="Join thousands claiming free products and gift cards daily. No purchase required." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dailyclaimit.com" />
+  <script defer src="https://www.clarity.ms/tag/x6fjwt28zp"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
@@ -326,10 +327,7 @@
     <p style="margin-top:8px;">© 2026 DailyClaimIt &nbsp;·&nbsp; This site connects users with third-party offer programs. Participation may be required. See individual offer terms for full details.</p>
   </footer>
 
-  <script defer src="https://www.clarity.ms/tag/x6fjwt28zp"></script>
-
   <script>
-    // ── REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL ──
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmyQME2DQlSfuXG093HgPyPdqzYlvDCu2R5FxAp-NZDP-wgCC428PesYzmA6FyznOp/exec';
 
     function isValidEmail(email) {
@@ -362,7 +360,6 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, timestamp: new Date().toISOString(), source: 'dailyclaimit-homepage' })
         });
-        // no-cors means we can't read the response, but the write happens server-side
         formWrap.style.display = 'none';
         confirm.classList.add('show');
       } catch (err) {
@@ -373,7 +370,6 @@
       }
     }
 
-    // Allow Enter key to submit
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('email-input').addEventListener('keydown', function(e) {
         if (e.key === 'Enter') handleEmailSubmit();
