@@ -39,6 +39,19 @@
       "active": true,
       "featured": true,
       "added": "2026-10-15"
+    },
+    {
+      "id": "swagbucks",
+      "title": "Swagbucks",
+      "category": "surveys-quizzes",
+      "description": "Earn points for taking surveys, shopping online and watching videos. Points can be redeemed for gift cards or PayPal. See Swagbucks' terms for requirements.",
+      "cta": "Join Swagbucks",
+      "url": "https://swagbucks.7eer.net/c/7401577/19503/799?subId1=dc_swagbucks",
+      "network": "impact",
+      "payout_note": "",
+      "active": true,
+      "featured": false,
+      "added": "2026-10-15"
     }
   ]
 }

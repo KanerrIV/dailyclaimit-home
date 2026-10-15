@@ -31,8 +31,8 @@ def load_offers():
         if o["category"] not in CATS: sys.exit(f"offer {o['id']} bad category {o['category']}")
         if o["id"] in ids: sys.exit(f"duplicate id {o['id']}")
         ids.add(o["id"])
-        s1 = [p[3:] for p in o["url"].split("?", 1)[-1].split("&") if p.startswith("s1=")]
-        if not s1: sys.exit(f"offer {o['id']} url has no s1 subID")
+        s1 = [p.split("=", 1)[1] for p in o["url"].split("?", 1)[-1].split("&") if p.startswith(("s1=", "subId1="))]
+        if not s1: sys.exit(f"offer {o['id']} url has no s1/subId1 subID")
         if s1[0] in s1s: sys.exit(f"duplicate s1 {s1[0]}")
         s1s.add(s1[0])
     return [o for o in offers if o["active"]]
