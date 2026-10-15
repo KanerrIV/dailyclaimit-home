@@ -3,227 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DailyClaimIt — Free Stuff. Real People. Every Day.</title>
-  <meta name="description" content="DailyClaimIt connects real people with free product testing opportunities, gift cards, and daily reward offers. No purchase required." />
-  <meta property="og:title" content="DailyClaimIt — Free Stuff. Real People. Every Day." />
-  <meta property="og:description" content="Join thousands claiming free products and gift cards daily. No purchase required." />
+  <title>DailyClaimIt — Sweepstakes, Paid Surveys &amp; Free Stuff</title>
+  <meta name="description" content="Browse free-to-enter sweepstakes, paid surveys and quizzes, and free stuff offers in one place. Free to use; offers are from affiliate partners." />
+  <link rel="canonical" href="https://dailyclaimit.com/" />
+  <meta property="og:site_name" content="DailyClaimIt" />
+  <meta property="og:title" content="DailyClaimIt — Sweepstakes, Paid Surveys &amp; Free Stuff" />
+  <meta property="og:description" content="Browse free-to-enter sweepstakes, paid surveys and quizzes, and free stuff offers in one place. Free to use; offers are from affiliate partners." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dailyclaimit.com" />
+  <meta property="og:url" content="https://dailyclaimit.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#F7F5F0" />
   <script defer src="https://www.clarity.ms/tag/x6fjwt28zp"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" /></noscript>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
-    :root {
-      --cream:   #F7F5F0; --white:   #FFFFFF; --ink:     #141210; --mid:     #6B6560;
-      --gold:    #D4A843; --gold-lt: #F5E6C0; --gold-dk: #A8832A;
-      --green:   #2DB87A; --green-lt:#D4F5E6; --green-dk:#1E8F5C;
-      --card-shadow: 0 2px 24px rgba(20,18,16,.08);
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
-
-    /* ── NAV ── */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,245,240,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,168,67,.18); padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--gold); }
-    .nav-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--cream); font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; letter-spacing: 0.01em; transition: background .2s ease, transform .2s ease; }
-    .nav-pill:hover { background: var(--gold-dk); transform: translateY(-1px); }
-    .nav-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: blink 1.6s ease-in-out infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-    /* ── HERO ── */
-    .hero { max-width: 1060px; margin: 0 auto; padding: 80px 32px 60px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
-    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-lt); border: 1px solid rgba(212,168,67,.4); border-radius: 999px; padding: 5px 14px 5px 8px; font-size: 12px; font-weight: 600; color: var(--gold-dk); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 22px; }
-    .kicker-icon { width: 20px; height: 20px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; }
-    .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(42px, 5.5vw, 68px); line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px; }
-    .hero h1 .accent { color: var(--gold); }
-    .hero h1 .accent-green { color: var(--green); }
-    .hero-body { font-size: 17px; line-height: 1.65; color: var(--mid); max-width: 420px; margin-bottom: 32px; }
-    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 999px; text-decoration: none; transition: background .2s, transform .2s; }
-    .btn-primary:hover { background: var(--gold-dk); transform: translateY(-2px); }
-    .btn-ghost { font-size: 14px; font-weight: 500; color: var(--mid); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color .2s; }
-    .btn-ghost:hover { color: var(--ink); }
-    .hero-ticker { display: flex; align-items: center; gap: 10px; margin-top: 28px; font-size: 13px; color: var(--mid); font-weight: 500; }
-    .ticker-avatars { display: flex; }
-    .ticker-avatar { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cream); display: flex; align-items: center; justify-content: center; font-size: 13px; margin-left: -8px; background: var(--gold-lt); }
-    .ticker-avatar:first-child { margin-left: 0; }
-    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
-    .stat-ring { width: 300px; height: 300px; border-radius: 50%; background: conic-gradient(var(--gold) 0deg 120deg, var(--green) 120deg 220deg, rgba(20,18,16,.07) 220deg 360deg); display: flex; align-items: center; justify-content: center; position: relative; }
-    .stat-ring::before { content: ''; position: absolute; inset: 18px; border-radius: 50%; background: var(--cream); }
-    .stat-ring-inner { position: relative; z-index: 1; text-align: center; }
-    .stat-number { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 52px; letter-spacing: -0.04em; color: var(--ink); line-height: 1; }
-    .stat-label { font-size: 13px; color: var(--mid); font-weight: 500; margin-top: 4px; }
-    .float-badge { position: absolute; background: var(--white); border-radius: 14px; padding: 10px 14px; box-shadow: var(--card-shadow); font-size: 13px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; animation: floatBob 3s ease-in-out infinite; white-space: nowrap; }
-    .float-badge.badge-a { top: 20px; right: -10px; animation-delay: 0s; }
-    .float-badge.badge-b { bottom: 30px; left: -20px; animation-delay: 1.2s; }
-    .float-badge.badge-c { top: 50%; right: -30px; transform: translateY(-50%); animation-delay: 0.6s; }
-    @keyframes floatBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    .badge-c { animation: floatBobMid 3s ease-in-out infinite; }
-    @keyframes floatBobMid { 0%,100% { transform: translateY(-50%); } 50% { transform: translateY(calc(-50% - 6px)); } }
-    .badge-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-    /* ── EMAIL CAPTURE BANNER ── */
-    .email-capture { background: var(--ink); padding: 48px 32px; }
-    .email-capture-inner { max-width: 680px; margin: 0 auto; text-align: center; }
-    .email-capture-eyebrow { display: inline-flex; align-items: center; gap: 7px; background: rgba(212,168,67,.15); border: 1px solid rgba(212,168,67,.3); border-radius: 999px; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .email-capture h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.03em; color: var(--cream); line-height: 1.1; margin-bottom: 10px; }
-    .email-capture h2 span { color: var(--gold); }
-    .email-capture-sub { font-size: 15px; color: rgba(247,245,240,.55); margin-bottom: 28px; line-height: 1.55; }
-    .email-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
-    .email-form input[type="email"] { flex: 1; padding: 14px 18px; border-radius: 999px; border: 1.5px solid rgba(247,245,240,.15); background: rgba(247,245,240,.08); color: var(--cream); font-size: 14px; font-family: 'Inter', sans-serif; outline: none; transition: border-color .2s; }
-    .email-form input[type="email"]::placeholder { color: rgba(247,245,240,.35); }
-    .email-form input[type="email"]:focus { border-color: var(--gold); }
-    .email-form button { background: var(--gold); color: var(--ink); font-weight: 700; font-size: 14px; padding: 14px 24px; border-radius: 999px; border: none; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap; transition: background .2s, transform .2s; }
-    .email-form button:hover { background: var(--gold-dk); transform: translateY(-1px); }
-    .email-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .email-confirm { display: none; align-items: center; gap: 10px; justify-content: center; color: var(--green); font-weight: 600; font-size: 15px; }
-    .email-confirm.show { display: flex; }
-    .email-confirm-icon { width: 28px; height: 28px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; }
-    .email-error { display: none; color: #F87171; font-size: 13px; margin-top: 10px; text-align: center; }
-    .email-error.show { display: block; }
-    .email-fine-print { margin-top: 14px; font-size: 11.5px; color: rgba(247,245,240,.3); }
-
-    /* ── HOW ── */
-    .how { background: var(--white); border-top: 1px solid rgba(20,18,16,.07); border-bottom: 1px solid rgba(20,18,16,.07); padding: 56px 32px; }
-    .how-inner { max-width: 900px; margin: 0 auto; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(212,168,67,.25); }
-    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .how-step { padding: 28px 24px; position: relative; }
-    .how-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 32px; font-size: 18px; color: rgba(20,18,16,.15); }
-    .step-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 48px; letter-spacing: -0.04em; color: var(--gold-lt); line-height: 1; margin-bottom: 10px; }
-    .step-title { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
-    .step-body { font-size: 14px; color: var(--mid); line-height: 1.6; }
-
-    /* ── OFFERS ── */
-    .offers { max-width: 1060px; margin: 0 auto; padding: 72px 32px; }
-    .offers-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; gap: 16px; }
-    .offers-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; }
-    .offers-title span { color: var(--green); }
-    .offers-meta { font-size: 13px; color: var(--mid); font-weight: 500; white-space: nowrap; padding-bottom: 4px; }
-    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .offer-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid rgba(20,18,16,.06); display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease; }
-    .offer-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(20,18,16,.14); }
-    .card-visual { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 56px; position: relative; overflow: hidden; }
-    .card-visual-makeup  { background: linear-gradient(135deg, #FDEFF3 0%, #F8D6E0 100%); }
-    .card-visual-cash    { background: linear-gradient(135deg, #F5E6C0 0%, #EDD18A 100%); }
-    .card-visual-surveys { background: linear-gradient(135deg, #FFF3E0 0%, #FFD180 100%); }
-    .card-tag { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.85); backdrop-filter: blur(6px); border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-    .tag-beauty  { color: #C04A72; }
-    .tag-cash    { color: var(--gold-dk); }
-    .tag-surveys { color: #C2410C; }
-    .card-live-badge { position: absolute; top: 12px; right: 12px; background: var(--green); color: #fff; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 5px; }
-    .card-live-badge .ldot { width: 5px; height: 5px; background: #fff; border-radius: 50%; animation: blink 1.4s ease-in-out infinite; }
-    .card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; }
-    .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 6px; }
-    .card-desc { font-size: 13.5px; color: var(--mid); line-height: 1.55; flex: 1; margin-bottom: 18px; }
-    .card-cta { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s; width: 100%; }
-    .card-cta:hover { transform: translateY(-2px); }
-    .cta-beauty  { background: linear-gradient(180deg, #FBD0DD 0%, #E98BAB 100%); color: var(--ink); box-shadow: 0 6px 18px rgba(190,80,120,.25); }
-    .cta-beauty:hover  { box-shadow: 0 10px 28px rgba(190,80,120,.38); }
-    .cta-cash    { background: linear-gradient(180deg, #F5E6C0 0%, #D4A843 100%); color: var(--ink); box-shadow: 0 6px 18px rgba(212,168,67,.3); }
-    .cta-cash:hover    { box-shadow: 0 10px 28px rgba(212,168,67,.45); }
-    .cta-surveys { background: linear-gradient(180deg, #FFD180 0%, #FF6D00 100%); color: var(--white); box-shadow: 0 6px 18px rgba(255,109,0,.3); }
-    .cta-surveys:hover { box-shadow: 0 10px 28px rgba(255,109,0,.45); }
-    .card-foot { padding: 0 22px 16px; font-size: 11.5px; color: #AAA39A; font-weight: 500; }
-
-    /* ── TRUST STRIP ── */
-    .trust-strip { border-top: 1px solid rgba(20,18,16,.07); border-bottom: 1px solid rgba(20,18,16,.07); background: var(--white); padding: 28px 32px; }
-    .trust-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; gap: 24px; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 500; color: var(--mid); }
-    .trust-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--gold-lt); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
-
-    /* ── FOOTER ── */
-    footer { padding: 36px 32px 30px; text-align: center; font-size: 12px; line-height: 1.8; color: #AAA39A; }
-    footer a { color: var(--gold-dk); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px; }
-    .footer-logo span { color: var(--gold); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 760px) {
-      .hero { grid-template-columns: 1fr; padding: 48px 20px 40px; gap: 40px; }
-      .hero-visual { order: -1; }
-      .stat-ring { width: 220px; height: 220px; }
-      .stat-number { font-size: 38px; }
-      .float-badge { display: none; }
-      .how-steps { grid-template-columns: 1fr; gap: 0; }
-      .how-step::after { display: none; }
-      .offer-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
-      .offers-header { flex-direction: column; align-items: flex-start; }
-      nav { padding: 0 20px; }
-      .how, .offers, .trust-strip, footer { padding-left: 20px; padding-right: 20px; }
-      .email-form { flex-direction: column; }
-      .email-form button { width: 100%; }
-      .email-capture { padding: 40px 20px; }
-    }
-    @media (max-width: 900px) and (min-width: 761px) {
-      .offer-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
-
   <nav>
     <a href="/" class="nav-logo">daily<span>claim</span>it</a>
-    <a href="#offers" class="nav-pill"><span class="nav-dot"></span>See Today's Offers</a>
+    <div class="nav-links"><a class="nl" href="/sweepstakes/">Sweepstakes</a><a class="nl" href="/surveys-quizzes/">Surveys &amp; Quizzes</a><a class="nl" href="/free-stuff/">Free Stuff</a><a href="/#offers" class="nav-pill"><span class="nav-dot"></span>Today's Offers</a></div>
   </nav>
 
   <section class="hero">
     <div class="hero-text">
-      <div class="hero-kicker"><span class="kicker-icon">🎁</span>New offers added daily</div>
+      <div class="hero-kicker"><span class="kicker-icon">🎁</span>Offers reviewed &amp; updated regularly</div>
       <h1>Your daily<br><span class="accent">rewards</span><br><span class="accent-green">drop.</span></h1>
-      <p class="hero-body">Free products. Gift cards. Real testers. DailyClaimIt connects you with legitimate claim opportunities — no purchase required, ever.</p>
+      <p class="hero-body">Sweepstakes, paid surveys and quizzes, and free stuff — collected in one place. Every listing links to the partner's own page and terms.</p>
       <div class="hero-actions">
         <a href="#offers" class="btn-primary">Browse Today's Offers →</a>
-        <a href="#how" class="btn-ghost">How it works ↓</a>
-      </div>
-      <div class="hero-ticker">
-        <div class="ticker-avatars">
-          <div class="ticker-avatar">👩</div>
-          <div class="ticker-avatar">🧑</div>
-          <div class="ticker-avatar">👩‍🦱</div>
-          <div class="ticker-avatar">🧔</div>
-        </div>
-        <span>416+ claims placed this week</span>
+        <a href="#categories" class="btn-ghost">Browse categories ↓</a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="stat-ring">
         <div class="stat-ring-inner">
           <div class="stat-number">$0</div>
-          <div class="stat-label">to claim anything</div>
+          <div class="stat-label">to use DailyClaimIt</div>
         </div>
       </div>
-      <div class="float-badge badge-a"><span class="badge-dot" style="background:var(--green)"></span>Makeup kit claimed ✓</div>
-      <div class="float-badge badge-b">🎁 Gift card available</div>
-      <div class="float-badge badge-c"><span class="badge-dot" style="background:var(--gold)"></span>No card needed</div>
+      <div class="float-badge badge-a"><span class="badge-dot" style="background:var(--green)"></span>Free to join</div>
+      <div class="float-badge badge-b">🎁 Giveaways &amp; freebies</div>
+      <div class="float-badge badge-c"><span class="badge-dot" style="background:var(--gold)"></span>Offers vetted daily</div>
     </div>
   </section>
 
-  <!-- ── EMAIL CAPTURE ── -->
+  <section class="offers" id="offers">
+    <div class="offers-header">
+      <div>
+        <div class="section-label">Featured</div>
+        <h2 class="offers-title">Today's <span>featured</span> offers</h2>
+      </div>
+      <div class="offers-meta">Sponsored · Availability varies</div>
+    </div>
+    <p class="aff-note"><strong>Disclosure:</strong> Offers below are from affiliate partners. We may earn a commission when you complete an offer, at no cost to you. <a href="/disclosure/">Learn more</a>.</p>
+    <div class="offer-grid" data-offers data-limit="6"><div class="offer-card" data-offer-id="snackbox"><div class="card-visual card-visual-free-stuff">🎁<div class="card-tag tag-free-stuff">Free Stuff</div></div><div class="card-body"><h3 class="card-title">Free Healthy Snack Box</h3><div class="card-desc">Sign up to try healthy products and share your feedback. Free shipping; no credit card required. Boxes are subject to availability.</div><a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=25012&amp;c=918277&amp;a=780205&amp;k=B63DBE8E25D5B79AA1F565616548A4E4&amp;l=26113&amp;s1=dc_home_snackbox" class="card-cta cta-free-stuff" rel="sponsored noopener" target="_blank">Check Availability →</a></div><div class="card-foot">Sponsored offer · See provider terms</div></div><div class="offer-card" data-offer-id="bigcash"><div class="card-visual card-visual-surveys-quizzes">📝<div class="card-tag tag-surveys-quizzes">Surveys &amp; Quizzes</div></div><div class="card-body"><h3 class="card-title">BigCash Rewards</h3><div class="card-desc">Play games, take surveys and complete offers to earn coins redeemable for cash or gift cards. See each offer&#x27;s requirements.</div><a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=32533&amp;c=918277&amp;a=780205&amp;k=9E4EC597B9D05F6D8ADF34C3319A5119&amp;l=39237&amp;s1=dc_home_bigcash" class="card-cta cta-surveys-quizzes" rel="sponsored noopener" target="_blank">Explore BigCash →</a></div><div class="card-foot">Sponsored offer · See provider terms</div></div><div class="offer-card" data-offer-id="win25k"><div class="card-visual card-visual-sweepstakes">💰<div class="card-tag tag-sweepstakes">Sweepstakes</div></div><div class="card-body"><h3 class="card-title">Win $25,000</h3><div class="card-desc">Enter your name and email for a chance to win $25,000 with Win Big Sweepstakes. Open to US residents. See offer terms for eligibility.</div><a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=30664&amp;c=918277&amp;a=780205&amp;k=DDC7CFBC1BB552D5B04944330F5478D0&amp;l=35193&amp;s1=dc_home_win25k" class="card-cta cta-sweepstakes" rel="sponsored noopener" target="_blank">Enter to Win →</a><p class="card-legal">No purchase necessary. See official rules on offer page.</p></div><div class="card-foot">Sponsored offer · See provider terms</div></div></div>
+  </section>
+
+  <section class="how" id="categories">
+    <div class="how-inner">
+      <div class="section-label">Browse by category</div>
+      <div class="cat-grid"><a class="cat-card" href="/sweepstakes/"><div class="ci">💰</div><h3>Sweepstakes</h3><p>Free-to-enter giveaways and cash sweepstakes from our partners.</p></a><a class="cat-card" href="/surveys-quizzes/"><div class="ci">📝</div><h3>Surveys &amp; Quizzes</h3><p>Paid surveys, quizzes and reward apps that pay in cash or gift cards.</p></a><a class="cat-card" href="/free-stuff/"><div class="ci">🎁</div><h3>Free Stuff</h3><p>Free samples, product testing and freebie offers.</p></a></div>
+    </div>
+  </section>
+
   <section class="email-capture" id="daily-drop">
     <div class="email-capture-inner">
       <div class="email-capture-eyebrow">✉️ The Daily Drop</div>
-      <h2>Get tomorrow's <span>best freebies</span><br>before they're gone</h2>
-      <p class="email-capture-sub">We email you one curated freebie, giveaway, or gift card drop every morning. Free to join, unsubscribe any time.</p>
-      <div id="email-form-wrap">
-        <div class="email-form">
-          <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email" />
-          <button id="email-submit-btn" onclick="handleEmailSubmit()">Send Me Freebies →</button>
-        </div>
-        <div class="email-error" id="email-error">Please enter a valid email address.</div>
+      <h2>Get new <span>freebies &amp; giveaways</span><br>in your inbox</h2>
+      <p class="email-capture-sub">We email a hand-picked freebie, giveaway, or reward offer. Free to join, unsubscribe any time.</p>
+      <form class="email-form" id="email-form" data-source="homepage" novalidate>
+        <label for="email-input" class="sr-only">Email address</label>
+        <input type="email" id="email-input" name="email" placeholder="your@email.com" autocomplete="email" required />
+        <button type="submit" id="email-submit-btn">Send Me Freebies →</button>
+      </form>
+      <div class="email-error" id="email-error" role="alert">Please enter a valid email address.</div>
+      <div class="email-confirm" id="email-confirm" role="status">
+        <span class="email-confirm-icon">✓</span><span>Thanks! Check your inbox.</span>
       </div>
-      <div class="email-confirm" id="email-confirm">
-        <span class="email-confirm-icon">✓</span>
-        <span>You're in! Check your inbox tomorrow morning.</span>
-      </div>
-      <p class="email-fine-print">No spam. No selling your info. Just freebies.</p>
+      <p class="email-consent">By subscribing you agree to receive emails from DailyClaimIt, which may include sponsored offers. See our <a href="/privacy/">Privacy Policy</a>. Unsubscribe any time.</p>
     </div>
   </section>
 
@@ -231,182 +90,35 @@
     <div class="how-inner">
       <div class="section-label">How DailyClaimIt works</div>
       <div class="how-steps">
-        <div class="how-step">
-          <div class="step-num">01</div>
-          <div class="step-title">Browse open offers</div>
-          <div class="step-body">We surface active claim opportunities — product testers wanted, gift card promos, and more.</div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">02</div>
-          <div class="step-title">Confirm your spot</div>
-          <div class="step-body">Each offer checks availability in your area. Spots are limited — claims are first-come.</div>
-        </div>
-        <div class="how-step">
-          <div class="step-num">03</div>
-          <div class="step-title">Receive your reward</div>
-          <div class="step-body">Follow the offer instructions. No purchase required to claim on any listing we feature.</div>
-        </div>
+        <div class="how-step"><div class="step-num">01</div><div class="step-title">Browse open offers</div><div class="step-body">We list active sweepstakes, survey and quiz rewards, and freebie offers from partner networks.</div></div>
+        <div class="how-step"><div class="step-num">02</div><div class="step-title">Read the partner's terms</div><div class="step-body">Each offer opens on the partner's site. Eligibility, requirements and official rules are set by them.</div></div>
+        <div class="how-step"><div class="step-num">03</div><div class="step-title">Complete the offer</div><div class="step-body">Follow the offer instructions. Rewards are provided by the offer sponsor, not DailyClaimIt.</div></div>
       </div>
-    </div>
-  </section>
-
-  <section class="offers" id="offers">
-    <div class="offers-header">
-      <div>
-        <div class="section-label">Active now</div>
-        <h2 class="offers-title">Today's <span>open</span> claims</h2>
-      </div>
-      <div class="offers-meta">Updated daily · Spots limited</div>
-    </div>
-    <div class="offer-grid">
-
-      <!-- Card 1: Healthy Snack Boxes -->
-      <div class="offer-card">
-        <div class="card-visual card-visual-makeup">
-          <svg viewBox="0 0 220 130" width="190" height="120" aria-hidden="true" focusable="false">
-            <ellipse cx="110" cy="120" rx="75" ry="8" fill="#C04A72" opacity=".12" />
-            <path d="M53 66l57-20 57 20-57 22z" fill="#A8832A" stroke="#141210" stroke-width="3" stroke-linejoin="round" />
-            <g transform="rotate(-12 84 54)">
-              <rect x="63" y="23" width="40" height="65" rx="5" fill="#2DB87A" stroke="#141210" stroke-width="3" />
-              <path d="M64 32h38M64 79h38" stroke="#1E8F5C" stroke-width="3" />
-              <path d="M75 59c-1-13 10-18 20-16 1 13-8 21-20 16z" fill="#D4F5E6" />
-              <path d="M75 62l15-15" stroke="#1E8F5C" stroke-width="2.5" stroke-linecap="round" />
-            </g>
-            <g transform="rotate(10 131 55)">
-              <rect x="111" y="22" width="38" height="67" rx="5" fill="#FBD0DD" stroke="#141210" stroke-width="3" />
-              <path d="M112 31h36M112 80h36" stroke="#C04A72" stroke-width="3" />
-              <rect x="118" y="43" width="24" height="20" rx="6" fill="#FFFFFF" />
-              <path d="M123 53h14M127 48v10M133 48v10" stroke="#D4A843" stroke-width="3" stroke-linecap="round" />
-            </g>
-            <path d="M53 66l57 21 57-21v39l-57 20-57-20z" fill="#D4A843" stroke="#141210" stroke-width="3" stroke-linejoin="round" />
-            <path d="M110 87v38M53 66l-18 14 57 21 18-14 18 14 57-21-18-14" fill="#F5E6C0" stroke="#141210" stroke-width="3" stroke-linejoin="round" />
-            <circle cx="142" cy="104" r="11" fill="#FFFFFF" />
-            <path d="M136 108c-1-9 6-13 13-12 0 9-6 14-13 12z" fill="#2DB87A" />
-            <path d="M30 35h12M36 29v12M182 48h10M187 43v10" stroke="#2DB87A" stroke-width="3" stroke-linecap="round" />
-          </svg>
-          <div class="card-tag tag-beauty">Product Testing</div>
-          <div class="card-live-badge"><span class="ldot"></span>Live</div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Free Healthy Snack Box</div>
-          <div class="card-desc">Sign up to try healthy products and share your feedback. Free shipping; no credit card required. Boxes are subject to availability.</div>
-          <a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=25012&amp;c=918277&amp;a=780205&amp;k=B63DBE8E25D5B79AA1F565616548A4E4&amp;l=26113&amp;s1=dailyclaimit_home_surveys" class="card-cta cta-beauty">Check Availability →</a>
-        </div>
-        <div class="card-foot">US residents only · Subject to availability</div>
-      </div>
-
-      <!-- Card 2: BigCash -->
-      <div class="offer-card">
-        <div class="card-visual card-visual-cash">
-          <svg viewBox="0 0 220 130" width="190" height="120" aria-hidden="true" focusable="false">
-            <ellipse cx="110" cy="113" rx="73" ry="8" fill="#A8832A" opacity=".15" />
-            <rect x="39" y="48" width="133" height="57" rx="25" fill="#FFFFFF" stroke="#141210" stroke-width="5" />
-            <path d="M64 66v24M52 78h24" stroke="#141210" stroke-width="6" stroke-linecap="round" />
-            <circle cx="139" cy="69" r="5" fill="#2DB87A" /><circle cx="152" cy="82" r="5" fill="#D4A843" />
-            <circle cx="106" cy="83" r="4" fill="#DDD8CE" />
-            <circle cx="174" cy="35" r="22" fill="#D4A843" stroke="#A8832A" stroke-width="4" />
-            <circle cx="174" cy="35" r="14" fill="none" stroke="#F5E6C0" stroke-width="2" />
-            <path d="M174 24v22M181 28c-8-7-17 1-8 6l4 2c10 6 0 14-9 6" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-            <path d="M24 37h13M30.5 30.5v13M198 79h10M203 74v10" stroke="#2DB87A" stroke-width="4" stroke-linecap="round" />
-          </svg>
-          <div class="card-tag tag-cash">Games &amp; Surveys</div>
-          <div class="card-live-badge"><span class="ldot"></span>Live</div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">BigCash Rewards</div>
-          <div class="card-desc">Play games, take surveys and complete offers to earn coins redeemable for cash or gift cards. See each offer’s requirements.</div>
-          <a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=32533&amp;c=918277&amp;a=780205&amp;k=9E4EC597B9D05F6D8ADF34C3319A5119&amp;l=39237&amp;s1=dailyclaimit_home_surveys" class="card-cta cta-cash">Explore BigCash →</a>
-        </div>
-        <div class="card-foot">Offer requirements apply · See provider terms</div>
-      </div>
-
-      <!-- Card 3: Win Big $25,000 Sweepstakes -->
-      <div class="offer-card">
-        <div class="card-visual card-visual-surveys">
-          💰
-          <div class="card-tag tag-surveys">Cash Sweepstakes</div>
-          <div class="card-live-badge"><span class="ldot"></span>Live</div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Win $25,000</div>
-          <div class="card-desc">Enter your name and email for a chance to win $25,000 with Win Big Sweepstakes. Open to US residents. See offer terms for eligibility.</div>
-          <a href="https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=30664&amp;c=918277&amp;a=780205&amp;k=DDC7CFBC1BB552D5B04944330F5478D0&amp;l=35193&amp;s1=dailyclaimit_home_winbig" class="card-cta cta-surveys" rel="sponsored">Enter to Win →</a>
-        </div>
-        <div class="card-foot">US only · See offer terms</div>
-      </div>
-
     </div>
   </section>
 
   <div class="trust-strip">
     <div class="trust-inner">
-      <div class="trust-item"><div class="trust-icon">📦</div><span>Full-size products, not samples</span></div>
-      <div class="trust-item"><div class="trust-icon">🔒</div><span>Your info is never sold</span></div>
-      <div class="trust-item"><div class="trust-icon">🚫</div><span>Zero purchase required</span></div>
-      <div class="trust-item"><div class="trust-icon">📬</div><span>Free shipping on physical kits</span></div>
+      <div class="trust-item"><div class="trust-icon">🆓</div><span>Free to join</span></div>
+      <div class="trust-item"><div class="trust-icon">✅</div><span>Offers vetted daily</span></div>
+      <div class="trust-item"><div class="trust-icon">🔗</div><span>Links go to official partner pages</span></div>
+      <div class="trust-item"><div class="trust-icon">📢</div><span><a href="/disclosure/" style="color:inherit">Affiliate relationships disclosed</a></span></div>
     </div>
   </div>
 
   <footer>
     <div class="footer-logo">daily<span>claim</span>it</div>
     <p>
-      <a href="https://makeup.dailyclaimit.com/privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-      <a href="https://makeup.dailyclaimit.com/terms.html">Terms</a> &nbsp;|&nbsp;
+      <a href="/sweepstakes/">Sweepstakes</a> &nbsp;|&nbsp; <a href="/surveys-quizzes/">Surveys &amp; Quizzes</a> &nbsp;|&nbsp; <a href="/free-stuff/">Free Stuff</a>
+    </p>
+    <p>
+      <a href="/disclosure/">Affiliate Disclosure</a> &nbsp;|&nbsp;
+      <a href="/privacy/">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="/terms/">Terms</a> &nbsp;|&nbsp;
       <a href="mailto:contact@dailyclaimit.com">Contact</a>
     </p>
-    <p style="margin-top:8px;">© 2026 DailyClaimIt &nbsp;·&nbsp; This site connects users with third-party offer programs. Participation may be required. See individual offer terms for full details.</p>
+    <p style="margin-top:8px;">© 2026 DailyClaimIt &nbsp;·&nbsp; DailyClaimIt lists third-party offers and may earn a commission when you complete them. We are not the sponsor of any sweepstakes or offer. See individual offer terms for full details.</p>
   </footer>
-
-  <script>
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmyQME2DQlSfuXG093HgPyPdqzYlvDCu2R5FxAp-NZDP-wgCC428PesYzmA6FyznOp/exec';
-
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-    }
-
-    async function handleEmailSubmit() {
-      const input = document.getElementById('email-input');
-      const btn   = document.getElementById('email-submit-btn');
-      const error = document.getElementById('email-error');
-      const confirm = document.getElementById('email-confirm');
-      const formWrap = document.getElementById('email-form-wrap');
-      const email = input.value.trim();
-
-      error.classList.remove('show');
-
-      if (!isValidEmail(email)) {
-        error.classList.add('show');
-        input.focus();
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Saving...';
-
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, timestamp: new Date().toISOString(), source: 'dailyclaimit-homepage' })
-        });
-        formWrap.style.display = 'none';
-        confirm.classList.add('show');
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Send Me Freebies →';
-        error.textContent = 'Something went wrong. Please try again.';
-        error.classList.add('show');
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('email-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') handleEmailSubmit();
-      });
-    });
-  </script>
-
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
-
