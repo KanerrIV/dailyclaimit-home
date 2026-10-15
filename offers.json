@@ -1,0 +1,44 @@
+{
+  "updated": "2026-10-15",
+  "offers": [
+    {
+      "id": "snackbox",
+      "title": "Free Healthy Snack Box",
+      "category": "free-stuff",
+      "description": "Sign up to try healthy products and share your feedback. Free shipping; no credit card required. Boxes are subject to availability.",
+      "cta": "Check Availability",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=25012&c=918277&a=780205&k=B63DBE8E25D5B79AA1F565616548A4E4&l=26113&s1=dc_home_snackbox",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": true,
+      "featured": true,
+      "added": "2026-10-15"
+    },
+    {
+      "id": "bigcash",
+      "title": "BigCash Rewards",
+      "category": "surveys-quizzes",
+      "description": "Play games, take surveys and complete offers to earn coins redeemable for cash or gift cards. See each offer's requirements.",
+      "cta": "Explore BigCash",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=32533&c=918277&a=780205&k=9E4EC597B9D05F6D8ADF34C3319A5119&l=39237&s1=dc_home_bigcash",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": true,
+      "featured": true,
+      "added": "2026-10-15"
+    },
+    {
+      "id": "win25k",
+      "title": "Win $25,000",
+      "category": "sweepstakes",
+      "description": "Enter your name and email for a chance to win $25,000 with Win Big Sweepstakes. Open to US residents. See offer terms for eligibility.",
+      "cta": "Enter to Win",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=30664&c=918277&a=780205&k=DDC7CFBC1BB552D5B04944330F5478D0&l=35193&s1=dc_home_win25k",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": true,
+      "featured": true,
+      "added": "2026-10-15"
+    }
+  ]
+}
