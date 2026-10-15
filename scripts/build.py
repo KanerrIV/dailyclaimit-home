@@ -95,6 +95,7 @@ def page(path, title, desc, body, current=None, noindex=False, head_extra="", og
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="impact-site-verification" value="2bfb9a7f-0743-4772-bbd6-8b48c01298c2">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{e(title)}</title>
