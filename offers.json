@@ -50,7 +50,7 @@
       "network": "impact",
       "payout_note": "",
       "active": true,
-      "featured": false,
+      "featured": true,
       "added": "2026-10-15"
     }
   ]
