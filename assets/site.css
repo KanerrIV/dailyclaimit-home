@@ -188,3 +188,6 @@ footer a:hover { text-decoration: underline; }
   .nav-links a.nl { display: none; }
   .page-head, .prose { padding-left: 20px; padding-right: 20px; }
 }
+
+.email-capture h2 { text-wrap: balance; max-width: 560px; margin-left: auto; margin-right: auto; font-size: clamp(24px, 3.6vw, 34px); }
+.how-step:not(:last-child)::after { color: var(--gold); font-size: 22px; font-weight: 700; opacity: .85; }

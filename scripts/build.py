@@ -69,7 +69,7 @@ def email_block(source):
   <section class="email-capture" id="daily-drop">
     <div class="email-capture-inner">
       <div class="email-capture-eyebrow">✉️ The Daily Drop</div>
-      <h2>Get new <span>freebies &amp; giveaways</span><br>in your inbox</h2>
+      <h2>Get new <span>freebies &amp;&nbsp;giveaways</span> in your inbox</h2>
       <p class="email-capture-sub">We email a hand-picked freebie, giveaway, or reward offer. Free to join, unsubscribe any time.</p>
       <form class="email-form" id="email-form" data-source="{source}" novalidate>
         <label for="email-input" class="sr-only">Email address</label>
@@ -203,7 +203,7 @@ def home(offers):
       <div class="trust-item"><div class="trust-icon">🆓</div><span>Free to join</span></div>
       <div class="trust-item"><div class="trust-icon">✅</div><span>Offers vetted daily</span></div>
       <div class="trust-item"><div class="trust-icon">🔗</div><span>Links go to official partner pages</span></div>
-      <div class="trust-item"><div class="trust-icon">📢</div><span><a href="/disclosure/" style="color:inherit">Affiliate relationships disclosed</a></span></div>
+      <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#A8832A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></div><span><a href="/disclosure/" style="color:inherit">Affiliate relationships disclosed</a></span></div>
     </div>
   </div>
 '''
@@ -242,7 +242,7 @@ def category(slug, offers):
     return page(f"/{slug}/", t, d, body, current=slug)
 
 
-REVIEW = '<p class="review-flag">Draft template — to be reviewed by Kane / legal counsel before relying on it.</p>'
+
 
 
 def legal(path, title, desc, h1, content):
@@ -250,7 +250,6 @@ def legal(path, title, desc, h1, content):
   <main class="prose">
     <h1>{h1}</h1>
     <p class="updated">Last updated: {date.today().strftime("%B %-d, %Y")}</p>
-    {REVIEW}
     {content}
   </main>
 '''
