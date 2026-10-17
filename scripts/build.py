@@ -91,6 +91,7 @@ def page(path, title, desc, body, current=None, noindex=False, head_extra="", og
         f'<a class="nl" href="/{k}/"{" aria-current=\"page\"" if current == k else ""}>{e(v[0])}</a>'
         for k, v in CATS.items())
     nav += f'<a class="nl" href="/guides/"{" aria-current=\"page\"" if current == "guides" else ""}>Guides</a>'
+    og_img = "" if "og:image" in head_extra else '\n  <meta property="og:image" content="https://dailyclaimit.com/assets/logo-full.png" />'
     robots = '\n  <meta name="robots" content="noindex" />' if noindex else ""
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -114,11 +115,14 @@ def page(path, title, desc, body, current=None, noindex=False, head_extra="", og
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" /></noscript>
-  <link rel="stylesheet" href="/assets/site.css" />{head_extra}
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/assets/site.css" />{head_extra}{og_img}
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo">daily<span>claim</span>it</a>
+    <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="DailyClaimIt" width="215" height="44" /></a>
     <div class="nav-links">{nav}<a href="/#offers" class="nav-pill"><span class="nav-dot"></span>Today's Offers</a></div>
   </nav>
 {body}

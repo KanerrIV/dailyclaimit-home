@@ -202,3 +202,7 @@ footer a:hover { text-decoration: underline; }
 .guide-offers .card-title { font-size: 16px; }
 .related { margin-top: 36px; border-top: 1px solid rgba(20,18,16,.1); padding-top: 8px; }
 .cat-card h3 { font-size: 17px; line-height: 1.25; }
+
+.nav-logo { display: inline-flex; align-items: center; line-height: 0; }
+.nav-logo img { display: block; height: 44px; width: auto; }
+@media (max-width: 640px) { .nav-logo img { height: 34px; } }
