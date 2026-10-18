@@ -24,7 +24,7 @@
       '<div class="card-desc">' + esc(o.description) + '</div>' +
       '<a href="' + esc(o.url) + '" class="card-cta cta-' + esc(o.category) + '" rel="sponsored noopener" target="_blank">' + esc(o.cta) + ' →</a>' +
       (o.category === 'sweepstakes' ? '<p class="card-legal">' + SWEEPS_NOTE + '</p>' : '') +
-      '</div><div class="card-foot">Sponsored offer · See provider terms</div></div>';
+      '</div></div>';
   }
 
   function renderOffers() {

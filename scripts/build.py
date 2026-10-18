@@ -52,13 +52,22 @@ def card(o):
     out += (f'<div class="card-desc">{e(o["description"])}</div>'
             f'<a href="{e(o["url"])}" class="card-cta cta-{c}" rel="sponsored noopener" target="_blank">{e(o["cta"])} →</a>')
     if o["category"] == "sweepstakes": out += f'<p class="card-legal">{SWEEPS_NOTE}</p>'
-    out += '</div><div class="card-foot">Sponsored offer · See provider terms</div></div>'
+    out += '</div></div>'
     return out
 
 
-AFF_NOTE = ('<p class="aff-note"><strong>Disclosure:</strong> Offers below are from affiliate partners. '
-            'We may earn a commission when you complete an offer, at no cost to you. '
-            '<a href="/disclosure/">Learn more</a>.</p>')
+# Site rule: disclosures/disclaimers appear only at the bottom of the page, just above the footer.
+# No banners above content and no per-card/per-button disclosure lines. Links keep rel="sponsored".
+# Exception: SWEEPS_NOTE stays on sweepstakes offer cards (legal requirement).
+DISCLOSURE_TEXT = ('<strong>Disclosure:</strong> Some links on this page are affiliate links. If you sign up through them, '
+                   'DailyClaimIt may earn a commission at no cost to you. Rewards and earnings vary. '
+                   '<a href="/disclosure/">See our full disclosure</a>.')
+
+
+def disclosure_block(extra=""):
+    extra_html = f"<p>{extra}</p>" if extra else ""
+    return ('\n  <aside class="disclosure-block" aria-label="Affiliate disclosure">'
+            f'<p>{DISCLOSURE_TEXT}</p>{extra_html}</aside>')
 
 
 def grid(items, category=None, limit=0):
@@ -89,7 +98,7 @@ def email_block(source):
   </section>'''
 
 
-def page(path, title, desc, body, current=None, noindex=False, head_extra="", og_type="website"):
+def page(path, title, desc, body, current=None, noindex=False, head_extra="", og_type="website", disclose=False, disclose_extra=""):
     canonical = SITE + path
     nav = "".join(
         f'<a class="nl" href="/{k}/"{" aria-current=\"page\"" if current == k else ""}>{e(v[0])}</a>'
@@ -129,7 +138,7 @@ def page(path, title, desc, body, current=None, noindex=False, head_extra="", og
     <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="DailyClaimIt" width="215" height="44" /></a>
     <div class="nav-links">{nav}<a href="/#offers" class="nav-pill"><span class="nav-dot"></span>Today's Offers</a></div>
   </nav>
-{body}
+{body}{disclosure_block(disclose_extra) if disclose else ''}
   <footer>
     <div class="footer-logo">daily<span>claim</span>it</div>
     <p>
@@ -185,9 +194,7 @@ def home(offers):
         <div class="section-label">Featured</div>
         <h2 class="offers-title">Today's <span>featured</span> offers</h2>
       </div>
-      <div class="offers-meta">Sponsored · Availability varies</div>
     </div>
-    {AFF_NOTE}
     {grid(featured, limit=6)}
   </section>
 
@@ -222,13 +229,13 @@ def home(offers):
 '''
     return page("/", "DailyClaimIt — Sweepstakes, Paid Surveys & Free Stuff",
                 "Browse free-to-enter sweepstakes, paid surveys and quizzes, and free stuff offers in one place. Free to use; offers are from affiliate partners.",
-                body)
+                body, disclose=True)
 
 
 def category(slug, offers):
     label, icon, blurb = CATS[slug]
     items = [o for o in offers if o["category"] == slug]
-    extra = (f'<p class="aff-note">{SWEEPS_NOTE} Sweepstakes are run by their sponsors; odds, eligibility and prizes are set in each sponsor\'s official rules.</p>'
+    extra = (f'{SWEEPS_NOTE} Sweepstakes are run by their sponsors; odds, eligibility and prizes are set in each sponsor\'s official rules.'
              if slug == "sweepstakes" else "")
     body = f'''
   <header class="page-head">
@@ -237,8 +244,6 @@ def category(slug, offers):
     <p>{e(blurb)} Every listing opens the partner's own page, where their terms apply.</p>
   </header>
   <section class="offers" style="padding-top:32px">
-    {AFF_NOTE}
-    {extra}
     {grid(items, category=slug)}
   </section>
 {email_block(slug)}
@@ -252,7 +257,7 @@ def category(slug, offers):
                        "Free samples, product testing and freebie offers from our partners. Availability and eligibility vary."),
     }
     t, d = titles[slug]
-    return page(f"/{slug}/", t, d, body, current=slug)
+    return page(f"/{slug}/", t, d, body, current=slug, disclose=True, disclose_extra=extra)
 
 
 
@@ -364,7 +369,7 @@ def guide_page(g, offers):
         cat = m.group(1)
         items = [o for o in offers if o["category"] == cat]
         if not items: return ""
-        return f'<div class="guide-offers">{AFF_NOTE}{grid(items, category=cat)}</div>'
+        return f'<div class="guide-offers">{grid(items, category=cat)}</div>'
     body_html = re.sub(r"<!--offers:([a-z-]+)-->", embed, g["body"])
     url = f"{SITE}/guides/{g['slug']}/"
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"],
@@ -385,7 +390,7 @@ def guide_page(g, offers):
   </main>
 '''
     return page(f"/guides/{g['slug']}/", g["meta_title"] + " | DailyClaimIt", g["description"], body,
-                current="guides", head_extra=head, og_type="article")
+                current="guides", head_extra=head, og_type="article", disclose=True)
 
 
 def guides_index(gs):
@@ -401,7 +406,7 @@ def guides_index(gs):
 '''
     return page("/guides/", "Guides: Sweepstakes, Paid Surveys, Rewards Apps & Free Stuff | DailyClaimIt",
                 "Honest, practical guides to entering sweepstakes, using paid survey and rewards sites, getting free samples, and avoiding scams.",
-                body, current="guides")
+                body, current="guides", disclose=True)
 
 
 ABOUT = '''
