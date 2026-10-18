@@ -35,6 +35,10 @@ def load_offers():
         if not s1: sys.exit(f"offer {o['id']} url has no s1/subId1 subID")
         if s1[0] in s1s: sys.exit(f"duplicate s1 {s1[0]}")
         s1s.add(s1[0])
+        # allowed_traffic / restrictions are compliance notes (see README.md). This site is
+        # Contextual traffic (text links + cards), so an active offer must allow Contextual.
+        if o["active"] and "Contextual" not in o.get("allowed_traffic", ["Contextual"]):
+            sys.exit(f"offer {o['id']} is active but allowed_traffic excludes Contextual")
     return [o for o in offers if o["active"]]
 
 

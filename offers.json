@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-18",
   "offers": [
     {
       "id": "snackbox",
@@ -10,22 +10,38 @@
       "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=25012&c=918277&a=780205&k=B63DBE8E25D5B79AA1F565616548A4E4&l=26113&s1=dc_home_snackbox",
       "network": "maxbounty",
       "payout_note": "",
-      "active": true,
+      "active": false,
       "featured": true,
-      "added": "2026-10-15"
+      "added": "2026-10-15",
+      "allowed_traffic": [
+        "Display",
+        "Social",
+        "Native",
+        "Mobile Ads"
+      ],
+      "restrictions": "MaxBounty o=25012. Contextual NOT allowed (no text links on this site). No guaranteed box claims; no unverified health benefits."
     },
     {
       "id": "bigcash",
       "title": "BigCash Rewards",
       "category": "surveys-quizzes",
-      "description": "Play games, take surveys and complete offers to earn coins redeemable for cash or gift cards. See each offer's requirements.",
+      "description": "Play games, take surveys and complete offers to earn coins redeemable for cash or gift cards. Rewards vary; see each offer's requirements.",
       "cta": "Explore BigCash",
       "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=32533&c=918277&a=780205&k=9E4EC597B9D05F6D8ADF34C3319A5119&l=39237&s1=dc_home_bigcash",
       "network": "maxbounty",
       "payout_note": "",
       "active": true,
       "featured": true,
-      "added": "2026-10-15"
+      "added": "2026-10-15",
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Social",
+        "Native",
+        "Mobile Ads"
+      ],
+      "restrictions": "MaxBounty o=32533. No email, no brand bidding, no misleading ads, no incentivized traffic."
     },
     {
       "id": "win25k",
@@ -38,7 +54,17 @@
       "payout_note": "",
       "active": false,
       "featured": true,
-      "added": "2026-10-15"
+      "added": "2026-10-15",
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Social",
+        "Native",
+        "Mobile Ads",
+        "Email"
+      ],
+      "restrictions": "MaxBounty o=30664. All traffic types allowed incl. Social and Email. Offer currently inactive."
     },
     {
       "id": "swagbucks",
@@ -51,20 +77,32 @@
       "payout_note": "",
       "active": true,
       "featured": true,
-      "added": "2026-10-15"
+      "added": "2026-10-15",
+      "allowed_traffic": [
+        "Contextual"
+      ],
+      "restrictions": "Impact. Allowed traffic types not confirmed in Impact: only on-site Contextual use assumed; treat Social and Email as NOT allowed until verified."
     },
     {
       "id": "inboxdollars",
       "title": "InboxDollars",
       "category": "surveys-quizzes",
-      "description": "Get paid in cash, not points, for taking surveys, playing games and shopping online. New members confirm their email to join. See InboxDollars' terms for requirements.",
+      "description": "Earn a cash balance (not points) for taking surveys, playing games and shopping online. New members confirm their email to join. Rewards vary; see InboxDollars' terms for requirements.",
       "cta": "Join InboxDollars",
       "url": "https://afflat3d3.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=6365&c=918277&a=780205&k=15E154AC89BFDF1B5C60C92EC2BD85FC&l=5077&s1=dc_inboxdollars",
       "network": "maxbounty",
       "payout_note": "",
       "active": true,
       "added": "2026-10-16",
-      "featured": true
+      "featured": true,
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Native",
+        "Mobile Ads"
+      ],
+      "restrictions": "MaxBounty o=6365. NO Social, NO Email. No brand bidding; keyword restriction list applies."
     }
   ]
 }
