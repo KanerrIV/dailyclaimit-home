@@ -98,6 +98,34 @@ def email_block(source):
   </section>'''
 
 
+KIT_PDF = "/downloads/paid-quiz-survey-starter-kit.pdf"  # built by scripts/build_starter_kit.py
+
+
+def kit_block(placement):
+    # Lead magnet signup. Same Apps Script/Sheets mechanism as the Daily Drop form (assets/site.js);
+    # the sheet's source column receives "dailyclaimit-starter_kit-<placement>".
+    fid = f"kit-email-{placement}"
+    return f'''
+  <section class="kit-box" id="starter-kit">
+    <div class="kit-inner">
+      <div class="email-capture-eyebrow">📋 Free download</div>
+      <p class="kit-title">Get the free <span>Paid Quiz &amp; Survey Starter Kit</span></p>
+      <p class="kit-sub">A 2-page printable checklist: the daily routine, mistakes that cost you rewards, red flags, and where to start.</p>
+      <form class="email-form kit-form" data-source="starter_kit-{placement}" novalidate>
+        <label for="{fid}" class="sr-only">Email address</label>
+        <input type="email" id="{fid}" name="email" placeholder="your@email.com" autocomplete="email" required />
+        <button type="submit">Get the Free Kit →</button>
+      </form>
+      <div class="email-error" role="alert">Please enter a valid email address.</div>
+      <div class="kit-thanks" role="status" hidden>
+        <p class="kit-thanks-title"><span class="email-confirm-icon">✓</span> You're in! Your starter kit is ready.</p>
+        <a class="kit-download" href="{KIT_PDF}" download="DailyClaimIt-Paid-Quiz-Survey-Starter-Kit.pdf" target="_blank" rel="noopener">⬇ Download the Starter Kit (PDF)</a>
+      </div>
+      <p class="email-consent">By subscribing you agree to receive emails from DailyClaimIt, which may include sponsored offers. See our <a href="/privacy/">Privacy Policy</a>. Unsubscribe any time.</p>
+    </div>
+  </section>'''
+
+
 def page(path, title, desc, body, current=None, noindex=False, head_extra="", og_type="website", disclose=False, disclose_extra=""):
     canonical = SITE + path
     nav = "".join(
@@ -246,6 +274,7 @@ def category(slug, offers):
   <section class="offers" style="padding-top:32px">
     {grid(items, category=slug)}
   </section>
+{kit_block(slug) if slug == "surveys-quizzes" else ""}
 {email_block(slug)}
 '''
     titles = {
@@ -371,6 +400,7 @@ def guide_page(g, offers):
         if not items: return ""
         return f'<div class="guide-offers">{grid(items, category=cat)}</div>'
     body_html = re.sub(r"<!--offers:([a-z-]+)-->", embed, g["body"])
+    body_html = body_html.replace("<!--starterkit-->", kit_block(g["slug"]))
     url = f"{SITE}/guides/{g['slug']}/"
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"],
           "description": g["description"], "datePublished": GUIDE_DATE, "dateModified": GUIDE_DATE,

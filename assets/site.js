@@ -51,12 +51,17 @@
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmyQME2DQlSfuXG093HgPyPdqzYlvDCu2R5FxAp-NZDP-wgCC428PesYzmA6FyznOp/exec';
 
   function setupEmail() {
-    var form = document.getElementById('email-form');
-    if (!form) return;
-    var input = document.getElementById('email-input');
-    var btn = document.getElementById('email-submit-btn');
-    var error = document.getElementById('email-error');
-    var confirm = document.getElementById('email-confirm');
+    // Every signup form (Daily Drop + Starter Kit boxes) uses the same Apps Script endpoint.
+    // Each form's data-source is sent as source: 'dailyclaimit-<data-source>'.
+    document.querySelectorAll('form.email-form[data-source]').forEach(setupForm);
+  }
+
+  function setupForm(form) {
+    var wrap = form.closest('.email-capture-inner, .kit-inner') || form.parentNode;
+    var input = form.querySelector('input[type="email"]');
+    var btn = form.querySelector('button[type="submit"]');
+    var error = wrap.querySelector('.email-error');
+    var confirm = wrap.querySelector('.email-confirm, .kit-thanks');
     var label = btn.textContent;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -79,7 +84,10 @@
         body: JSON.stringify({ email: email, timestamp: new Date().toISOString(), source: 'dailyclaimit-' + (form.getAttribute('data-source') || 'site') })
       }).then(function () {
         form.style.display = 'none';
+        confirm.hidden = false;
         confirm.classList.add('show');
+        var dl = confirm.querySelector('.kit-download');
+        if (dl) dl.focus();
       }).catch(function () {
         btn.disabled = false;
         btn.textContent = label;
