@@ -4,18 +4,13 @@
 Usage: python3 scripts/build_starter_kit.py   (needs google-chrome or chromium for --print-to-pdf)
 Re-run whenever offers.json changes so the PDF's "Where to start" links stay current.
 """
-import json, os, subprocess, shutil, tempfile, html, base64
+import json, os, sys, subprocess, shutil, tempfile, html, base64
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import build  # shared offer loading + per-placement tagging (dc_pdf_kit_<offer>)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "downloads", "paid-quiz-survey-starter-kit.pdf")
 e = lambda s: html.escape(str(s), quote=True)
-WHY = {"inboxdollars": "Shows your balance in cash rather than points; surveys, games and shopping.",
-       "bigcash": "Games, surveys and offers that earn coins you can redeem for cash or gift cards.",
-       "swagbucks": "Points for surveys, polls, shopping and videos; redeem for gift cards or PayPal."}
-ORDER = ["inboxdollars", "bigcash", "swagbucks"]
-
-offers = [o for o in json.load(open(os.path.join(ROOT, "offers.json")))["offers"]
-          if o["active"] and o["category"] == "surveys-quizzes"]
-offers.sort(key=lambda o: ORDER.index(o["id"]) if o["id"] in ORDER else 99)
+links = build.kit_links(build.load_offers())  # active surveys-quizzes offers, tagged dc_pdf_kit_<offer>
 logo = base64.b64encode(open(os.path.join(ROOT, "assets", "logo-full.png"), "rb").read()).decode()
 
 def checklist(items):
@@ -37,7 +32,7 @@ flags = ["Paying to join or to &ldquo;unlock&rdquo; earnings", "Guaranteed big p
          "Requests for your SSN, bank login or card number for a small reward",
          "No company name, terms or support contact", "Quizzes asking security-question facts (first pet, mother's maiden name)",
          "A check for more than you're owed, plus a request to send money back"]
-start = "".join(f'<div class="offer"><a href="{e(o["url"])}">{e(o["title"])} &rarr;</a><p>{WHY.get(o["id"], e(o["description"]))}</p></div>' for o in offers)
+start = "".join(f'<div class="offer"><a href="{e(url)}">{e(o["title"])} &rarr;</a><p>{e(o.get("reason", o["description"]))}</p></div>' for o, url in links)
 
 doc = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><title>Paid Quiz &amp; Survey Starter Kit | DailyClaimIt</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

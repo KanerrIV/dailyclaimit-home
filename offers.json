@@ -41,7 +41,9 @@
         "Native",
         "Mobile Ads"
       ],
-      "restrictions": "MaxBounty o=32533. No email, no brand bidding, no misleading ads, no incentivized traffic."
+      "restrictions": "MaxBounty o=32533. No email, no brand bidding, no misleading ads, no incentivized traffic.",
+      "reason": "Games, surveys and offers that earn coins you redeem for cash or gift cards.",
+      "short": "BigCash"
     },
     {
       "id": "win25k",
@@ -81,7 +83,9 @@
       "allowed_traffic": [
         "Contextual"
       ],
-      "restrictions": "Impact. Allowed traffic types not confirmed in Impact: only on-site Contextual use assumed; treat Social and Email as NOT allowed until verified."
+      "restrictions": "Impact. Allowed traffic types not confirmed in Impact: only on-site Contextual use assumed; treat Social and Email as NOT allowed until verified.",
+      "reason": "Points for surveys, polls, shopping and videos, redeemable for gift cards or PayPal.",
+      "short": "Swagbucks"
     },
     {
       "id": "inboxdollars",
@@ -102,7 +106,9 @@
         "Native",
         "Mobile Ads"
       ],
-      "restrictions": "MaxBounty o=6365. NO Social, NO Email. No brand bidding; keyword restriction list applies."
+      "restrictions": "MaxBounty o=6365. NO Social, NO Email. No brand bidding; keyword restriction list applies.",
+      "reason": "Your balance is shown in cash, not points, for surveys, games and shopping.",
+      "short": "InboxDollars"
     }
   ]
 }

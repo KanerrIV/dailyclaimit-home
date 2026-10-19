@@ -13,7 +13,13 @@
     });
   }
 
-  function card(o) {
+  // Same rule as build.py tag_url(): rewrite s1 / subId1 to dc_<page>_<placement>_<offer>.
+  function tagUrl(url, tag) {
+    tag = String(tag).toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 50);
+    return url.replace(/([?&](?:s1|subId1)=)[^&]*/, '$1' + tag);
+  }
+
+  function card(o, tag) {
     var c = CATS[o.category] || { label: o.category, icon: '⭐' };
     return '<div class="offer-card" data-offer-id="' + esc(o.id) + '">' +
       '<div class="card-visual card-visual-' + esc(o.category) + '">' + c.icon +
@@ -22,7 +28,7 @@
       '<h3 class="card-title">' + esc(o.title) + '</h3>' +
       (o.payout_note ? '<div class="card-payout">' + esc(o.payout_note) + '</div>' : '') +
       '<div class="card-desc">' + esc(o.description) + '</div>' +
-      '<a href="' + esc(o.url) + '" class="card-cta cta-' + esc(o.category) + '" rel="sponsored noopener" target="_blank">' + esc(o.cta) + ' →</a>' +
+      '<a href="' + esc(tag ? tagUrl(o.url, tag + '_' + o.id) : o.url) + '" class="card-cta cta-' + esc(o.category) + '" rel="sponsored noopener" target="_blank">' + esc(o.cta) + ' →</a>' +
       (o.category === 'sweepstakes' ? '<p class="card-legal">' + SWEEPS_NOTE + '</p>' : '') +
       '</div></div>';
   }
@@ -41,7 +47,8 @@
           });
           var limit = parseInt(g.getAttribute('data-limit') || '0', 10);
           if (limit) items = items.slice(0, limit);
-          g.innerHTML = items.length ? items.map(card).join('') :
+          var tag = g.getAttribute('data-tag');
+          g.innerHTML = items.length ? items.map(function (o) { return card(o, tag); }).join('') :
             '<p class="empty-note">No open offers in this category right now. Check back soon.</p>';
         });
       })

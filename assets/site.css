@@ -237,3 +237,7 @@ footer a:hover { text-decoration: underline; }
 .kit-box a.kit-download { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 18px; padding: 18px 34px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 26px rgba(212,168,67,.45); transition: transform .2s, background .2s; }
 .kit-box a.kit-download:hover { background: var(--cream); transform: translateY(-2px); }
 @media (max-width: 760px) { .kit-box { padding: 0 20px; } .kit-inner { padding: 26px 18px 20px; } .kit-box a.kit-download { width: 100%; font-size: 16px; padding: 16px 18px; } }
+
+.page-head-compact { padding-top: 40px; }
+.page-head-compact h1 { margin-bottom: 0; }
+.cat-intro { font-size: 15px; color: var(--mid); line-height: 1.6; max-width: 640px; margin-top: 26px; }
