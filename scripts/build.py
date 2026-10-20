@@ -350,6 +350,16 @@ def home(offers):
                 body, disclose=True)
 
 
+BEFORE_YOU_ENTER = '''
+  <section class="guide-links" aria-labelledby="before-you-enter">
+    <h2 id="before-you-enter">Before you enter</h2>
+    <ul>
+      <li><a href="/guides/how-online-sweepstakes-work/">What "No Purchase Necessary" means and how to read official rules</a>: why you never have to buy anything to enter, and how the free entry method works.</li>
+      <li><a href="/guides/sweepstakes-taxes-us/">How sweepstakes winnings are taxed in the US</a>: fair market value, Form 1099-MISC, and state taxes on prizes.</li>
+    </ul>
+  </section>'''
+
+
 def category(slug, offers):
     label, icon, blurb = CATS[slug]
     items = [o for o in offers if o["category"] == slug]
@@ -363,7 +373,7 @@ def category(slug, offers):
   <section class="offers" style="padding-top:20px">
     {grid(items, slug, "cat", category=slug)}
     <p class="cat-intro">{e(blurb)} Every listing opens the partner's own page, where their terms apply.</p>
-  </section>
+  </section>{BEFORE_YOU_ENTER if slug == "sweepstakes" else ""}
 {kit_block(slug) if slug == "surveys-quizzes" else ""}
 {email_block(slug)}
 '''

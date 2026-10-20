@@ -241,3 +241,9 @@ footer a:hover { text-decoration: underline; }
 .page-head-compact { padding-top: 40px; }
 .page-head-compact h1 { margin-bottom: 0; }
 .cat-intro { font-size: 15px; color: var(--mid); line-height: 1.6; max-width: 640px; margin-top: 26px; }
+.quick-answer { background: var(--white); border-left: 4px solid var(--gold); border-radius: 12px; padding: 4px 18px 6px; margin: 22px 0 8px; }
+.quick-answer h2 { margin-top: 14px; }
+.guide-links { max-width: 1060px; margin: 0 auto; padding: 0 32px 48px; }
+.guide-links h2 { font-family: 'Syne', sans-serif; font-size: 21px; margin: 0 0 10px; }
+.guide-links ul { padding-left: 20px; line-height: 1.7; color: var(--mid); max-width: 720px; }
+.guide-links a { color: var(--gold-dk); font-weight: 600; }
