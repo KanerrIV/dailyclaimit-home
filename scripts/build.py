@@ -56,7 +56,8 @@ PAGE_SHORT = {
     "best-free-stuff-categories": "freecats", "product-testing-programs-explained": "prodtest",
     "beginners-guide-daily-sweepstakes": "sweepsbegin", "how-online-sweepstakes-work": "sweepswork",
     "spot-fake-sweepstakes-scams": "sweepsscams", "sweepstakes-taxes-us": "sweepstax",
-    "protect-privacy-giveaways": "privacy", "starter-kit-pdf": "pdf",
+    "protect-privacy-giveaways": "privacy", "how-long-to-cash-out-survey-sites": "cashout",
+    "starter-kit-pdf": "pdf",
 }
 TAG_RE = re.compile(r"^[a-z0-9_]{1,50}$")
 TAGS = {}  # tag -> (page key, placement, offer id)
@@ -501,11 +502,13 @@ def guide_page(g, offers):
     body_html = re.sub(r"<!--offers:([a-z-]+)-->", embed, body_html)
     body_html = body_html.replace("<!--starterkit-->", kit_block(g["slug"]))
     url = f"{SITE}/guides/{g['slug']}/"
+    gdate = g.get("date", GUIDE_DATE)  # optional "date" (YYYY-MM-DD) in front matter; older guides use GUIDE_DATE
+    gdate_label = date.fromisoformat(gdate).strftime("%B %-d, %Y")
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"],
-          "description": g["description"], "datePublished": GUIDE_DATE, "dateModified": GUIDE_DATE,
+          "description": g["description"], "datePublished": gdate, "dateModified": gdate,
           "mainEntityOfPage": url, "author": {"@type": "Organization", "name": "DailyClaimIt", "url": SITE + "/about/"},
           "publisher": {"@type": "Organization", "name": "DailyClaimIt", "url": SITE}}
-    head = '\n  <meta property="article:published_time" content="' + GUIDE_DATE + '" />' \
+    head = '\n  <meta property="article:published_time" content="' + gdate + '" />' \
            '\n  <script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False).replace("</", "<\\/") + '</script>'
     related = [x for x in load_guides() if x["slug"] != g["slug"] and x["category"] == g["category"]][:3]
     rel_html = "".join(f'<li><a href="/guides/{x["slug"]}/">{e(x["title"])}</a></li>' for x in related)
@@ -513,7 +516,7 @@ def guide_page(g, offers):
   <main class="prose guide">
     <p class="crumbs"><a href="/">Home</a> › <a href="/guides/">Guides</a></p>
     <h1>{e(g["title"])}</h1>
-    <p class="updated">By the DailyClaimIt team · Published <time datetime="{GUIDE_DATE}">October 15, 2026</time></p>
+    <p class="updated">By the DailyClaimIt team · Published <time datetime="{gdate}">{gdate_label}</time></p>
     {body_html}
     <aside class="related"><h2>Related guides</h2><ul>{rel_html}<li><a href="/guides/">All guides</a></li></ul></aside>
   </main>
