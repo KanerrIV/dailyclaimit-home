@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
-"""Generate downloads/paid-quiz-survey-starter-kit.pdf from offers.json (active surveys-quizzes offers).
+"""Generate the Paid Quiz & Survey Starter Kit PDF.
 
-Usage: python3 scripts/build_starter_kit.py   (needs google-chrome or chromium for --print-to-pdf)
-Re-run whenever offers.json changes so the PDF's "Where to start" links stay current.
+Usage (needs google-chrome or chromium for --print-to-pdf):
+  python3 scripts/build_starter_kit.py          -> downloads/paid-quiz-survey-starter-kit.pdf
+      Site version: "Where to start" uses tagged affiliate links (dc_pdf_kit_<offer>) from offers.json.
+      Re-run whenever offers.json changes so those links stay current.
+  python3 scripts/build_starter_kit.py --email  -> downloads/starter-kit-email.pdf
+      EMAIL-SAFE version for the email sequence only. Our active offers don't allow email traffic,
+      so this variant has NO hyperlinks at all: no offer/affiliate links, no links to dailyclaimit.com
+      pages with offer buttons, no offer or brand names, no disclosure/tracker/earnings content.
+      "Where to start" is replaced by a generic "How to pick a site" checklist.
+      Do NOT link this file from any site page or the sitemap.
 """
 import json, os, sys, subprocess, shutil, tempfile, html, base64
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build  # shared offer loading + per-placement tagging (dc_pdf_kit_<offer>)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "downloads", "paid-quiz-survey-starter-kit.pdf")
+EMAIL = "--email" in sys.argv[1:]
+OUT = os.path.join(ROOT, "downloads", "starter-kit-email.pdf" if EMAIL else "paid-quiz-survey-starter-kit.pdf")
 e = lambda s: html.escape(str(s), quote=True)
-links = build.kit_links(build.load_offers())  # active surveys-quizzes offers, tagged dc_pdf_kit_<offer>
 logo = base64.b64encode(open(os.path.join(ROOT, "assets", "logo-full.png"), "rb").read()).decode()
 
 def checklist(items):
@@ -32,7 +40,26 @@ flags = ["Paying to join or to &ldquo;unlock&rdquo; earnings", "Guaranteed big p
          "Requests for your SSN, bank login or card number for a small reward",
          "No company name, terms or support contact", "Quizzes asking security-question facts (first pet, mother's maiden name)",
          "A check for more than you're owed, plus a request to send money back"]
-start = "".join(f'<div class="offer"><a href="{e(url)}">{e(o["title"])} &rarr;</a><p>{e(o.get("reason", o["description"]))}</p></div>' for o, url in links)
+pick = [("Clear cash-out minimum.", "The threshold is stated up front and is low enough to reach in a few weeks."),
+        ("PayPal or gift card options.", "Look for familiar payout methods, not just site credit or points."),
+        ("Real terms and support.", "A named company, published terms, a privacy policy and a way to contact support."),
+        ("No upfront fees.", "It should be free to join and free to cash out. Never pay to &ldquo;unlock&rdquo; earnings."),
+        ("Reasonable data requests.", "Profile questions are normal; SSN, bank logins or card numbers for a small reward are not."),
+        ("Recent payout reviews.", "Check independent reviews for people actually getting paid recently.")]
+
+if EMAIL:
+    # Email-safe: generic criteria instead of offers, plain-text site mention only (no <a> tags anywhere).
+    p2_label = "Paid Quiz &amp; Survey Starter Kit"
+    p2_body = f'''<div class="card"><h2>&#128269; How to pick a site</h2><p class="tip" style="margin-bottom:10px">Before you sign up anywhere, check for these. Pick one or two that pass, complete your profile, then follow the routine on page 1.</p><ul class="check">{checklist(pick)}</ul></div>
+  <div class="card"><h2>&#128218; Keep learning</h2><p class="tip">More free guides on paid quizzes, surveys and sweepstakes at dailyclaimit.com</p></div>
+  <div class="foot">Each platform's own terms apply. &middot; &copy; DailyClaimIt</div>'''
+else:
+    links = build.kit_links(build.load_offers())  # active surveys-quizzes offers, tagged dc_pdf_kit_<offer>
+    start = "".join(f'<div class="offer"><a href="{e(url)}">{e(o["title"])} &rarr;</a><p>{e(o.get("reason", o["description"]))}</p></div>' for o, url in links)
+    p2_label = "Paid Quiz &amp; Survey Starter Kit"
+    p2_body = f'''<div class="card"><h2>&#128640; Where to start</h2><p class="tip" style="margin-bottom:10px">Pick one or two, complete your profile, then follow the routine on page 1.</p>{start}</div>
+  <div class="card"><h2>&#128218; Keep learning</h2><p class="tip">Full guide: <a href="https://dailyclaimit.com/guides/how-to-make-money-with-paid-quizzes/" style="color:#A8832A">dailyclaimit.com/guides/how-to-make-money-with-paid-quizzes</a><br>More offers: <a href="https://dailyclaimit.com/surveys-quizzes/" style="color:#A8832A">dailyclaimit.com/surveys-quizzes</a></p></div>
+  <div class="foot"><strong>Disclosure:</strong> Some links in this kit are affiliate links. If you sign up through them, DailyClaimIt may earn a commission at no cost to you. Rewards and earnings vary; each platform's own terms apply. Full disclosure: <a href="https://dailyclaimit.com/disclosure/">dailyclaimit.com/disclosure</a> &middot; &copy; DailyClaimIt</div>'''
 
 doc = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><title>Paid Quiz &amp; Survey Starter Kit | DailyClaimIt</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,17 +95,19 @@ ul.flags li::before {{ content: "!"; position: absolute; left: 0; top: 0; color:
   <div class="card"><h2>&#9888;&#65039; Mistakes that cost you rewards</h2><ul class="check">{checklist(mistakes)}</ul></div>
 </div>
 <div class="page">
-  <div class="top"><img src="data:image/png;base64,{logo}" alt="DailyClaimIt"><span>Paid Quiz &amp; Survey Starter Kit</span></div>
+  <div class="top"><img src="data:image/png;base64,{logo}" alt="DailyClaimIt"><span>{p2_label}</span></div>
   <div class="card"><h2>&#128681; Red flags: walk away if you see these</h2><ul class="flags">{"".join(f"<li>{f}</li>" for f in flags)}</ul></div>
-  <div class="card"><h2>&#128640; Where to start</h2><p class="tip" style="margin-bottom:10px">Pick one or two, complete your profile, then follow the routine on page 1.</p>{start}</div>
-  <div class="card"><h2>&#128218; Keep learning</h2><p class="tip">Full guide: <a href="https://dailyclaimit.com/guides/how-to-make-money-with-paid-quizzes/" style="color:#A8832A">dailyclaimit.com/guides/how-to-make-money-with-paid-quizzes</a><br>More offers: <a href="https://dailyclaimit.com/surveys-quizzes/" style="color:#A8832A">dailyclaimit.com/surveys-quizzes</a></p></div>
-  <div class="foot"><strong>Disclosure:</strong> Some links in this kit are affiliate links. If you sign up through them, DailyClaimIt may earn a commission at no cost to you. Rewards and earnings vary; each platform's own terms apply. Full disclosure: <a href="https://dailyclaimit.com/disclosure/">dailyclaimit.com/disclosure</a> &middot; &copy; DailyClaimIt</div>
+  {p2_body}
 </div>
 </body></html>'''
 
 chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
 with tempfile.TemporaryDirectory() as d:
     src = os.path.join(d, "kit.html"); open(src, "w", encoding="utf-8").write(doc)
+    if EMAIL:
+        assert "<a " not in doc and "href=\"http" not in doc.replace('href="https://fonts.googleapis.com', ''), "email kit must contain no links"
+        for banned in ("BigCash", "InboxDollars", "Swagbucks", "DoorDash", "dc_pdf"):
+            assert banned.lower() not in doc.lower(), f"email kit must not mention {banned}"
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     subprocess.run([chrome, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
                     "--virtual-time-budget=8000", f"--print-to-pdf={OUT}", "file://" + src],
