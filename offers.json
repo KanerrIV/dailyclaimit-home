@@ -135,6 +135,66 @@
       "restrictions": "MaxBounty o=6365. NO Social, NO Email. No brand bidding; keyword restriction list applies.",
       "reason": "Your balance is shown in cash, not points, for surveys, games and shopping.",
       "short": "InboxDollars"
+    },
+    {
+      "id": "doordash",
+      "title": "$100 DoorDash Gift Card Monthly Drawing",
+      "category": "sweepstakes",
+      "description": "A monthly sweepstakes drawing for a $100 DoorDash gift card, run by ConsumerTestConnect. Open to US residents 18+; one entry per person per day. DoorDash is not affiliated with the sweepstakes. Registering includes marketing emails.",
+      "cta": "Register Now",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=23221&c=160552&a=780205&k=46D5168E1D44C95E4FD7C0B29BBCDB97&l=24219&s1=dc_doordash",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": true,
+      "featured": false,
+      "added": "2026-10-21",
+      "banner": {
+        "id": "160552",
+        "image": "/assets/banner-doordash-23221-160552.jpg",
+        "width": 500,
+        "height": 250,
+        "alt": "$100 DoorDash gift card monthly contest from ConsumerTestConnect: Register Now"
+      },
+      "rules_url": "https://consumertestconnect.com/100-official-rules",
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Social",
+        "Native",
+        "Mobile Ads"
+      ],
+      "restrictions": "MaxBounty o=23221 ConsumerTestConnect DoorDash SOI (cap 100/day). BANNER ONLY (no text links): official banner 160552 500x250, self-hosted unaltered. NO Email, NO incentive, NO brand bidding. Monthly drawing; no guarantees."
+    },
+    {
+      "id": "paypal100",
+      "title": "$100 PayPal Gift Card",
+      "category": "sweepstakes",
+      "description": "Claim your gift: register with the sponsor for a monthly $100 PayPal gift card drawing. Open to US residents 18+. PayPal is not affiliated with the promotion.",
+      "cta": "Claim your gift",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=30187&c=195736&a=780205&k=12640C93F75686D539028BD84F9552AC&l=34148&s1=dc_paypal100",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": false,
+      "featured": false,
+      "added": "2026-10-21",
+      "banner": {
+        "id": "195736",
+        "image": "/assets/banner-paypal100-30187-195736.gif",
+        "width": 300,
+        "height": 250,
+        "alt": "$100 PayPal gift card banner"
+      },
+      "rules_url": "https://consumertestconnect.com/100-official-rules",
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Social",
+        "Native",
+        "Mobile Ads"
+      ],
+      "restrictions": "MaxBounty o=30187 ConsumerTestConnect $100 PayPal SOI (cap 100/day). BANNER ONLY. NO Email, NO incentive, NO brand bidding, no misleading claims, NO 'win/test/free' language; use 'Claim your gift'. ON HOLD (inactive): every approved banner (195736, 195627, 195628, 195735) shows 'Win' and/or the 'Consumer Test Connect' logo, and banners can't be altered. Needs a compliant creative or written OK from MaxBounty/advertiser."
     }
   ]
 }

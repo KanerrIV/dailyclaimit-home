@@ -247,3 +247,6 @@ footer a:hover { text-decoration: underline; }
 .guide-links h2 { font-family: 'Syne', sans-serif; font-size: 21px; margin: 0 0 10px; }
 .guide-links ul { padding-left: 20px; line-height: 1.7; color: var(--mid); max-width: 720px; }
 .guide-links a { color: var(--gold-dk); font-weight: 600; }
+/* Banner-only offers: official creative, unaltered, scaled to the card width */
+.offer-card-banner .banner-link { display: block; background: var(--white); line-height: 0; }
+.offer-banner { display: block; max-width: 100%; height: auto; margin: 0 auto; }

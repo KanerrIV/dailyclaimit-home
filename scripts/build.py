@@ -39,7 +39,24 @@ def load_offers():
         # Contextual traffic (text links + cards), so an active offer must allow Contextual.
         if o["active"] and "Contextual" not in o.get("allowed_traffic", ["Contextual"]):
             sys.exit(f"offer {o['id']} is active but allowed_traffic excludes Contextual")
+        if o.get("banner"): check_banner(o)
     return [o for o in offers if o["active"]]
+
+
+def check_banner(o):
+    """Banner-only offers (network allows banners, no text links): rendered as the official
+    image, unaltered, linking to the click URL whose c= is the banner id. See README.md."""
+    b = o["banner"]
+    miss = [k for k in ("id", "image", "width", "height", "alt") if not b.get(k)]
+    if miss: sys.exit(f"offer {o['id']} banner missing {miss}")
+    c = re.search(r"[?&]c=([^&]*)", o["url"])
+    if not c or c.group(1) != str(b["id"]): sys.exit(f"offer {o['id']} url c= must be banner id {b['id']}")
+    if not b["image"].startswith("/assets/"): sys.exit(f"offer {o['id']} banner image must be self-hosted under /assets/")
+    if o["active"] and not os.path.isfile(os.path.join(ROOT, b["image"].lstrip("/"))):
+        sys.exit(f"offer {o['id']} banner image {b['image']} not found")
+
+
+def is_banner(o): return bool(o.get("banner"))
 
 
 # ---- Per-placement sub-ID tracking -------------------------------------------------------
@@ -47,7 +64,7 @@ def load_offers():
 #   dc_<page>_<placement>_<offer>   (lowercase [a-z0-9_], <= 50 chars)
 # offers.json keeps its base URLs (and the s1/subId1 validator above still checks them).
 # All tags used in a build are written to the table in README.md.
-PLACEMENTS = ("top", "mid", "end", "card", "home", "cat", "kit")
+PLACEMENTS = ("top", "mid", "end", "card", "home", "cat", "kit", "banner")
 PAGE_SHORT = {
     "home": "home", "sweepstakes": "sweeps", "surveys-quizzes": "surveys", "free-stuff": "free",
     "how-to-make-money-with-paid-quizzes": "paidquiz", "are-paid-quizzes-legit": "quizlegit",
@@ -93,7 +110,7 @@ CTA_ORDER = ["bigcash", "surveys2cash", "inboxdollars", "swagbucks"]
 
 
 def cta_offers(offers):
-    items = [o for o in offers if o["category"] == "surveys-quizzes"]
+    items = [o for o in offers if o["category"] == "surveys-quizzes" and not is_banner(o)]
     return sorted(items, key=lambda o: (CTA_ORDER.index(o["id"]) if o["id"] in CTA_ORDER else 99, o["id"]))
 
 
@@ -130,7 +147,22 @@ def write_tag_table():
     print("wrote README.md tag table", len(TAGS), "tags")
 
 
+def banner_card(o, page_key):
+    """Banner-only offer: the official creative is the only offer link (no text CTA)."""
+    b = o["banner"]
+    out = (f'<div class="offer-card offer-card-banner" data-offer-id="{e(o["id"])}">'
+           f'<a class="banner-link" href="{e(offer_url(o, page_key, "banner"))}" rel="sponsored noopener" target="_blank">'
+           f'<img class="offer-banner" src="{e(b["image"])}" width="{int(b["width"])}" height="{int(b["height"])}" alt="{e(b["alt"])}" loading="lazy" /></a>'
+           f'<div class="card-body"><h3 class="card-title">{e(o["title"])}</h3><div class="card-desc">{e(o["description"])}</div>')
+    if o["category"] == "sweepstakes":
+        rules = (f' <a href="{e(o["rules_url"])}" rel="nofollow noopener" target="_blank">Official rules</a>.'
+                 if o.get("rules_url") else " See official rules on offer page.")
+        out += f'<p class="card-legal">No purchase necessary.{rules}</p>'
+    return out + '</div></div>'
+
+
 def card(o, page_key, placement):
+    if is_banner(o): return banner_card(o, page_key)
     label, icon, _ = CATS[o["category"]]
     c = e(o["category"])
     out = (f'<div class="offer-card" data-offer-id="{e(o["id"])}">'
@@ -158,8 +190,10 @@ def disclosure_block(extra=""):
             f'<p>{DISCLOSURE_TEXT}</p>{extra_html}</aside>')
 
 
-def grid(items, page_key, placement, category=None, limit=0):
+def grid(items, page_key, placement, category=None, limit=0, banners=False):
     attrs = f' data-category="{category}"' if category else ""
+    if banners: attrs += " data-banners"  # site.js renders banner-only offers only in these grids
+    else: items = [o for o in items if not is_banner(o)]
     attrs += f' data-tag="dc_{page_short(page_key)}_{placement}"'  # site.js re-renders cards with the same tags
     if limit: attrs += f' data-limit="{limit}"'
     if limit: items = items[:limit]
@@ -278,7 +312,7 @@ def page(path, title, desc, body, current=None, noindex=False, head_extra="", og
 
 
 def home(offers):
-    featured = [o for o in offers if o.get("featured")] or offers
+    featured = [o for o in offers if o.get("featured") and not is_banner(o)] or [o for o in offers if not is_banner(o)]
     cats = "".join(
         f'<a class="cat-card" href="/{k}/"><div class="ci">{v[1]}</div><h3>{e(v[0])}</h3>'
         f'<p>{e(v[2])}</p></a>' for k, v in CATS.items())
@@ -371,7 +405,7 @@ def category(slug, offers):
     <h1>{e(label)}</h1>
   </header>
   <section class="offers" style="padding-top:20px">
-    {grid(items, slug, "cat", category=slug)}
+    {grid(items, slug, "cat", category=slug, banners=True)}
     <p class="cat-intro">{e(blurb)} Every listing opens the partner's own page, where their terms apply.</p>
   </section>{BEFORE_YOU_ENTER if slug == "sweepstakes" else ""}
 {kit_block(slug) if slug == "surveys-quizzes" else ""}
@@ -496,7 +530,7 @@ def guides_section(gs):
 def guide_page(g, offers):
     def embed(m):
         cat = m.group(1)
-        items = [o for o in offers if o["category"] == cat]
+        items = [o for o in offers if o["category"] == cat and not is_banner(o)]  # banner offers: category page only
         if not items: return ""
         return f'<div class="guide-offers">{grid(items, g["slug"], "card", category=cat)}</div>'
     if re.search(r"https?://(afflat|[a-z0-9-]+\.7eer\.net)", g["body"]):
@@ -506,6 +540,7 @@ def guide_page(g, offers):
     def link(m):
         oid, pl = m.group(1), m.group(2)
         if oid not in by_id: sys.exit(f"{g['slug']}: offer {oid} is not active")
+        if is_banner(by_id[oid]): sys.exit(f"{g['slug']}: offer {oid} is banner-only; no text links")
         return f'href="{e(offer_url(by_id[oid], g["slug"], pl))}"'
     body_html = re.sub(r'href="offer:([a-z0-9]+):([a-z]+)"', link, g["body"])
     body_html = re.sub(r"<!--cta:(top|mid|end)(?:\|(.*?))?-->", lambda m: cta_box(offers, g["slug"], m.group(1), m.group(2) or ""), body_html)

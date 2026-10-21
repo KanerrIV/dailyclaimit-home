@@ -23,11 +23,26 @@ Current status (MaxBounty audit, 2026-10-18):
 | win25k | MaxBounty 30664 | All, incl. Social and Email | Inactive (offer down). |
 | inboxdollars | MaxBounty 6365 | Contextual, Display, Search, Native, Mobile Ads | NO Social, NO Email, no brand bidding (keyword restriction list applies). |
 | surveys2cash | MaxBounty 15647 | Contextual, Display, Search, Social, Native, Mobile Ads, Email, Brand Bidding | Approved 2026-10-21. SOI, US 18+, cap 10/day. NO incentive traffic. |
+| doordash | MaxBounty 23221 (ConsumerTestConnect) | Contextual, Display, Search, Social, Native, Mobile Ads | **Banner only** (160552 500x250). NO Email, NO incentive, NO brand bidding. Monthly $100 DoorDash gift card drawing. |
+| paypal100 | MaxBounty 30187 (ConsumerTestConnect) | Contextual, Display, Search, Social, Native, Mobile Ads | **Inactive / on hold**: banner only, NO 'win/test/free' language, but every approved banner shows 'Win' and/or the 'Consumer Test Connect' logo. |
 | swagbucks | Impact | Unconfirmed | Treat Social and Email as not allowed until verified. |
 
 ## Pending
 
 - None.
+
+## Banner-only offers
+
+Some offers allow banners but no text links. Give them a `banner` object in `offers.json`:
+`{"id": "<creative id>", "image": "/assets/<file>", "width": W, "height": H, "alt": "..."}` plus an optional
+`rules_url` (sweepstakes official rules). The build then:
+
+- requires the click URL's `c=` to equal the banner id and the image to be self-hosted under `/assets/` (download the
+  network's `.dat` file and save it unaltered with its real extension; never hotlink);
+- renders the image (scaled with `max-width:100%`) as the only offer link, tagged `dc_<page>_banner_<offer>`, with the
+  title, a factual line and, for sweepstakes, "No purchase necessary" + the official rules link (no text CTA);
+- shows banner offers only on their category page (`data-banners` grid). They are excluded from the homepage, guide
+  card embeds, CTA boxes and the Starter Kit, and `href="offer:<id>:..."` text links to them fail the build.
 
 ## Lead magnet: Paid Quiz & Survey Starter Kit
 
@@ -136,4 +151,5 @@ Every offer link the build renders has its `s1` (MaxBounty) or `subId1` (Impact)
 | `dc_surveys_cat_inboxdollars` | surveys-quizzes | cat | inboxdollars |
 | `dc_surveys_cat_surveys2cash` | surveys-quizzes | cat | surveys2cash |
 | `dc_surveys_cat_swagbucks` | surveys-quizzes | cat | swagbucks |
+| `dc_sweeps_banner_doordash` | sweepstakes | banner | doordash |
 <!-- TAGS:END -->

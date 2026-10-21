@@ -19,7 +19,20 @@
     return url.replace(/([?&](?:s1|subId1)=)[^&]*/, '$1' + tag);
   }
 
+  // Banner-only offers (same markup as build.py banner_card): the official image is the only offer link.
+  function bannerCard(o, tag) {
+    var b = o.banner;
+    var t = tag ? tagUrl(o.url, tag.replace(/_[a-z]+$/, '_banner') + '_' + o.id) : o.url;
+    var legal = o.category === 'sweepstakes' ? '<p class="card-legal">No purchase necessary.' +
+      (o.rules_url ? ' <a href="' + esc(o.rules_url) + '" rel="nofollow noopener" target="_blank">Official rules</a>.' : ' See official rules on offer page.') + '</p>' : '';
+    return '<div class="offer-card offer-card-banner" data-offer-id="' + esc(o.id) + '">' +
+      '<a class="banner-link" href="' + esc(t) + '" rel="sponsored noopener" target="_blank">' +
+      '<img class="offer-banner" src="' + esc(b.image) + '" width="' + esc(b.width) + '" height="' + esc(b.height) + '" alt="' + esc(b.alt) + '" loading="lazy" /></a>' +
+      '<div class="card-body"><h3 class="card-title">' + esc(o.title) + '</h3><div class="card-desc">' + esc(o.description) + '</div>' + legal + '</div></div>';
+  }
+
   function card(o, tag) {
+    if (o.banner) return bannerCard(o, tag);
     var c = CATS[o.category] || { label: o.category, icon: '⭐' };
     return '<div class="offer-card" data-offer-id="' + esc(o.id) + '">' +
       '<div class="card-visual card-visual-' + esc(o.category) + '">' + c.icon +
@@ -43,7 +56,7 @@
         grids.forEach(function (g) {
           var cat = g.getAttribute('data-category');
           var items = list.filter(function (o) {
-            return cat ? o.category === cat : o.featured;
+            return cat ? o.category === cat && (!o.banner || g.hasAttribute('data-banners')) : o.featured && !o.banner;
           });
           var limit = parseInt(g.getAttribute('data-limit') || '0', 10);
           if (limit) items = items.slice(0, limit);
