@@ -22,11 +22,12 @@ Current status (MaxBounty audit, 2026-10-18):
 | bigcash | MaxBounty 32533 | Contextual, Display, Search, Social, Native, Mobile Ads | No email, no brand bidding, no misleading ads, no incentivized. |
 | win25k | MaxBounty 30664 | All, incl. Social and Email | Inactive (offer down). |
 | inboxdollars | MaxBounty 6365 | Contextual, Display, Search, Native, Mobile Ads | NO Social, NO Email, no brand bidding (keyword restriction list applies). |
+| surveys2cash | MaxBounty 15647 | Contextual, Display, Search, Social, Native, Mobile Ads, Email, Brand Bidding | Approved 2026-10-21. SOI, US 18+, cap 10/day. NO incentive traffic. |
 | swagbucks | Impact | Unconfirmed | Treat Social and Email as not allowed until verified. |
 
 ## Pending
 
-- **Surveys2Cash** (MaxBounty 15647): pending approval. Allows Contextual, Social, Email. No incentive traffic; 18+ US only; cap 10/day. Not in `offers.json` yet.
+- None.
 
 ## Lead magnet: Paid Quiz & Survey Starter Kit
 
@@ -58,63 +59,81 @@ Every offer link the build renders has its `s1` (MaxBounty) or `subId1` (Impact)
 |---|---|---|---|
 | `dc_quizlegit_top_bigcash` | are-paid-quizzes-legit | top | bigcash |
 | `dc_quizlegit_top_inboxdollars` | are-paid-quizzes-legit | top | inboxdollars |
+| `dc_quizlegit_top_surveys2cash` | are-paid-quizzes-legit | top | surveys2cash |
 | `dc_quizlegit_top_swagbucks` | are-paid-quizzes-legit | top | swagbucks |
 | `dc_quizlegit_mid_bigcash` | are-paid-quizzes-legit | mid | bigcash |
 | `dc_quizlegit_mid_inboxdollars` | are-paid-quizzes-legit | mid | inboxdollars |
+| `dc_quizlegit_mid_surveys2cash` | are-paid-quizzes-legit | mid | surveys2cash |
 | `dc_quizlegit_mid_swagbucks` | are-paid-quizzes-legit | mid | swagbucks |
 | `dc_quizlegit_end_swagbucks` | are-paid-quizzes-legit | end | swagbucks |
 | `dc_quizlegit_card_bigcash` | are-paid-quizzes-legit | card | bigcash |
 | `dc_quizlegit_card_inboxdollars` | are-paid-quizzes-legit | card | inboxdollars |
+| `dc_quizlegit_card_surveys2cash` | are-paid-quizzes-legit | card | surveys2cash |
 | `dc_quizlegit_card_swagbucks` | are-paid-quizzes-legit | card | swagbucks |
 | `dc_home_home_bigcash` | home | home | bigcash |
 | `dc_home_home_inboxdollars` | home | home | inboxdollars |
 | `dc_home_home_swagbucks` | home | home | swagbucks |
 | `dc_cashout_top_bigcash` | how-long-to-cash-out-survey-sites | top | bigcash |
 | `dc_cashout_top_inboxdollars` | how-long-to-cash-out-survey-sites | top | inboxdollars |
+| `dc_cashout_top_surveys2cash` | how-long-to-cash-out-survey-sites | top | surveys2cash |
 | `dc_cashout_top_swagbucks` | how-long-to-cash-out-survey-sites | top | swagbucks |
 | `dc_cashout_mid_bigcash` | how-long-to-cash-out-survey-sites | mid | bigcash |
 | `dc_cashout_mid_inboxdollars` | how-long-to-cash-out-survey-sites | mid | inboxdollars |
+| `dc_cashout_mid_surveys2cash` | how-long-to-cash-out-survey-sites | mid | surveys2cash |
 | `dc_cashout_mid_swagbucks` | how-long-to-cash-out-survey-sites | mid | swagbucks |
 | `dc_cashout_end_bigcash` | how-long-to-cash-out-survey-sites | end | bigcash |
 | `dc_cashout_end_inboxdollars` | how-long-to-cash-out-survey-sites | end | inboxdollars |
+| `dc_cashout_end_surveys2cash` | how-long-to-cash-out-survey-sites | end | surveys2cash |
 | `dc_cashout_end_swagbucks` | how-long-to-cash-out-survey-sites | end | swagbucks |
 | `dc_cashout_card_bigcash` | how-long-to-cash-out-survey-sites | card | bigcash |
 | `dc_cashout_card_inboxdollars` | how-long-to-cash-out-survey-sites | card | inboxdollars |
+| `dc_cashout_card_surveys2cash` | how-long-to-cash-out-survey-sites | card | surveys2cash |
 | `dc_cashout_card_swagbucks` | how-long-to-cash-out-survey-sites | card | swagbucks |
 | `dc_paidquiz_top_bigcash` | how-to-make-money-with-paid-quizzes | top | bigcash |
 | `dc_paidquiz_top_inboxdollars` | how-to-make-money-with-paid-quizzes | top | inboxdollars |
+| `dc_paidquiz_top_surveys2cash` | how-to-make-money-with-paid-quizzes | top | surveys2cash |
 | `dc_paidquiz_top_swagbucks` | how-to-make-money-with-paid-quizzes | top | swagbucks |
 | `dc_paidquiz_mid_bigcash` | how-to-make-money-with-paid-quizzes | mid | bigcash |
 | `dc_paidquiz_mid_inboxdollars` | how-to-make-money-with-paid-quizzes | mid | inboxdollars |
+| `dc_paidquiz_mid_surveys2cash` | how-to-make-money-with-paid-quizzes | mid | surveys2cash |
 | `dc_paidquiz_mid_swagbucks` | how-to-make-money-with-paid-quizzes | mid | swagbucks |
 | `dc_paidquiz_end_bigcash` | how-to-make-money-with-paid-quizzes | end | bigcash |
 | `dc_paidquiz_end_inboxdollars` | how-to-make-money-with-paid-quizzes | end | inboxdollars |
+| `dc_paidquiz_end_surveys2cash` | how-to-make-money-with-paid-quizzes | end | surveys2cash |
 | `dc_paidquiz_end_swagbucks` | how-to-make-money-with-paid-quizzes | end | swagbucks |
 | `dc_paidquiz_card_bigcash` | how-to-make-money-with-paid-quizzes | card | bigcash |
 | `dc_paidquiz_card_inboxdollars` | how-to-make-money-with-paid-quizzes | card | inboxdollars |
+| `dc_paidquiz_card_surveys2cash` | how-to-make-money-with-paid-quizzes | card | surveys2cash |
 | `dc_paidquiz_card_swagbucks` | how-to-make-money-with-paid-quizzes | card | swagbucks |
 | `dc_surveysites_top_bigcash` | legit-paid-survey-sites | top | bigcash |
 | `dc_surveysites_top_inboxdollars` | legit-paid-survey-sites | top | inboxdollars |
+| `dc_surveysites_top_surveys2cash` | legit-paid-survey-sites | top | surveys2cash |
 | `dc_surveysites_top_swagbucks` | legit-paid-survey-sites | top | swagbucks |
 | `dc_surveysites_mid_bigcash` | legit-paid-survey-sites | mid | bigcash |
 | `dc_surveysites_mid_inboxdollars` | legit-paid-survey-sites | mid | inboxdollars |
+| `dc_surveysites_mid_surveys2cash` | legit-paid-survey-sites | mid | surveys2cash |
 | `dc_surveysites_mid_swagbucks` | legit-paid-survey-sites | mid | swagbucks |
 | `dc_surveysites_end_swagbucks` | legit-paid-survey-sites | end | swagbucks |
 | `dc_surveysites_card_bigcash` | legit-paid-survey-sites | card | bigcash |
 | `dc_surveysites_card_inboxdollars` | legit-paid-survey-sites | card | inboxdollars |
+| `dc_surveysites_card_surveys2cash` | legit-paid-survey-sites | card | surveys2cash |
 | `dc_surveysites_card_swagbucks` | legit-paid-survey-sites | card | swagbucks |
 | `dc_rewardsapps_end_swagbucks` | rewards-apps-extra-money | end | swagbucks |
 | `dc_rewardsapps_card_bigcash` | rewards-apps-extra-money | card | bigcash |
 | `dc_rewardsapps_card_inboxdollars` | rewards-apps-extra-money | card | inboxdollars |
+| `dc_rewardsapps_card_surveys2cash` | rewards-apps-extra-money | card | surveys2cash |
 | `dc_rewardsapps_card_swagbucks` | rewards-apps-extra-money | card | swagbucks |
 | `dc_rewardscmp_end_swagbucks` | rewards-sites-compared | end | swagbucks |
 | `dc_rewardscmp_card_bigcash` | rewards-sites-compared | card | bigcash |
 | `dc_rewardscmp_card_inboxdollars` | rewards-sites-compared | card | inboxdollars |
+| `dc_rewardscmp_card_surveys2cash` | rewards-sites-compared | card | surveys2cash |
 | `dc_rewardscmp_card_swagbucks` | rewards-sites-compared | card | swagbucks |
 | `dc_pdf_kit_bigcash` | starter-kit-pdf | kit | bigcash |
 | `dc_pdf_kit_inboxdollars` | starter-kit-pdf | kit | inboxdollars |
+| `dc_pdf_kit_surveys2cash` | starter-kit-pdf | kit | surveys2cash |
 | `dc_pdf_kit_swagbucks` | starter-kit-pdf | kit | swagbucks |
 | `dc_surveys_cat_bigcash` | surveys-quizzes | cat | bigcash |
 | `dc_surveys_cat_inboxdollars` | surveys-quizzes | cat | inboxdollars |
+| `dc_surveys_cat_surveys2cash` | surveys-quizzes | cat | surveys2cash |
 | `dc_surveys_cat_swagbucks` | surveys-quizzes | cat | swagbucks |
 <!-- TAGS:END -->

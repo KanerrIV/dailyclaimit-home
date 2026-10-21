@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-21",
   "offers": [
     {
       "id": "snackbox",
@@ -44,6 +44,32 @@
       "restrictions": "MaxBounty o=32533. No email, no brand bidding, no misleading ads, no incentivized traffic.",
       "reason": "Games, surveys and offers that earn coins you redeem for cash or gift cards.",
       "short": "BigCash"
+    },
+    {
+      "id": "surveys2cash",
+      "title": "Surveys2Cash",
+      "category": "surveys-quizzes",
+      "description": "Sign up to take surveys through Surveys2Cash's partner survey widget. Free to join; opportunities may reward cash, PayPal or gift cards. Rewards vary. It's an ad-supported site, so signing up includes promotional emails.",
+      "cta": "Join Surveys2Cash",
+      "url": "https://afflat3d2.com/trk/lnk/0333AF69-53A4-4060-B664-61FBCC429F4E/?o=15647&c=918277&a=780205&k=FA25C3B8EE89DA10C06AEE4EAED6B167&l=16862&s1=dc_surveys2cash",
+      "network": "maxbounty",
+      "payout_note": "",
+      "active": true,
+      "featured": false,
+      "added": "2026-10-21",
+      "allowed_traffic": [
+        "Contextual",
+        "Display",
+        "Search",
+        "Social",
+        "Native",
+        "Mobile Ads",
+        "Email",
+        "Brand Bidding"
+      ],
+      "restrictions": "MaxBounty o=15647 (SOI, US only, 18+, cap 10/day). No incentive traffic. Text links and banners available; no banned words listed. Converts on a completed signup form (valid info + terms checkboxes).",
+      "reason": "Free signup for a survey site whose partner survey widget may reward cash, PayPal or gift cards.",
+      "short": "Surveys2Cash"
     },
     {
       "id": "win25k",

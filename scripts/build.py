@@ -89,7 +89,7 @@ def offer_url(o, page_key, placement):
     return tag_url(o["url"], make_tag(page_key, placement, o["id"]))
 
 
-CTA_ORDER = ["inboxdollars", "bigcash", "swagbucks"]
+CTA_ORDER = ["bigcash", "surveys2cash", "inboxdollars", "swagbucks"]
 
 
 def cta_offers(offers):
