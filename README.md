@@ -152,4 +152,16 @@ Every offer link the build renders has its `s1` (MaxBounty) or `subId1` (Impact)
 | `dc_surveys_cat_surveys2cash` | surveys-quizzes | cat | surveys2cash |
 | `dc_surveys_cat_swagbucks` | surveys-quizzes | cat | swagbucks |
 | `dc_sweeps_banner_doordash` | sweepstakes | banner | doordash |
+| `dc_screenout_top_bigcash` | why-you-get-screened-out-of-surveys | top | bigcash |
+| `dc_screenout_top_inboxdollars` | why-you-get-screened-out-of-surveys | top | inboxdollars |
+| `dc_screenout_top_surveys2cash` | why-you-get-screened-out-of-surveys | top | surveys2cash |
+| `dc_screenout_top_swagbucks` | why-you-get-screened-out-of-surveys | top | swagbucks |
+| `dc_screenout_end_bigcash` | why-you-get-screened-out-of-surveys | end | bigcash |
+| `dc_screenout_end_inboxdollars` | why-you-get-screened-out-of-surveys | end | inboxdollars |
+| `dc_screenout_end_surveys2cash` | why-you-get-screened-out-of-surveys | end | surveys2cash |
+| `dc_screenout_end_swagbucks` | why-you-get-screened-out-of-surveys | end | swagbucks |
+| `dc_screenout_card_bigcash` | why-you-get-screened-out-of-surveys | card | bigcash |
+| `dc_screenout_card_inboxdollars` | why-you-get-screened-out-of-surveys | card | inboxdollars |
+| `dc_screenout_card_surveys2cash` | why-you-get-screened-out-of-surveys | card | surveys2cash |
+| `dc_screenout_card_swagbucks` | why-you-get-screened-out-of-surveys | card | swagbucks |
 <!-- TAGS:END -->

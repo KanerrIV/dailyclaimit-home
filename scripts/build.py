@@ -74,7 +74,7 @@ PAGE_SHORT = {
     "beginners-guide-daily-sweepstakes": "sweepsbegin", "how-online-sweepstakes-work": "sweepswork",
     "spot-fake-sweepstakes-scams": "sweepsscams", "sweepstakes-taxes-us": "sweepstax",
     "protect-privacy-giveaways": "privacy", "how-long-to-cash-out-survey-sites": "cashout",
-    "what-happens-if-you-win-sweepstakes": "winclaim",
+    "what-happens-if-you-win-sweepstakes": "winclaim", "why-you-get-screened-out-of-surveys": "screenout",
     "starter-kit-pdf": "pdf",
 }
 TAG_RE = re.compile(r"^[a-z0-9_]{1,50}$")
